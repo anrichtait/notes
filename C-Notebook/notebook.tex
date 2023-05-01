@@ -1,0 +1,857 @@
+\documentclass[
+	12pt, % Default font size, values between 10pt-12pt are allowed
+	%letterpaper, % Uncomment for US letter paper size
+	%spanish, % Uncomment for Spanish
+]{fphw}
+
+% Template-specific packages
+\usepackage[utf8]{inputenc} % Required for inputting international characters
+\usepackage[T1]{fontenc} % Output font encoding for international characters
+\usepackage{mathpazo} % Use the Palatino font
+\usepackage{graphicx} % Required for including images
+\usepackage{booktabs} % Required for better horizontal rules in tables
+\usepackage{listings} % Required for insertion of code
+\usepackage{enumerate} % To modify the enumerate environment
+%----------------------------------------------------------------------------------------
+%	ASSIGNMENT INFORMATION
+%----------------------------------------------------------------------------------------
+\title{C Notebook} % Assignment title
+
+\author{Anrich Tait} % Student name
+
+\date{March, 2024} % Due date
+
+\institute{ALX \\ Software Engineering} % Institute or school name
+
+\class{C Low Level Programming} % Course or class name
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+\maketitle % Output the assignment title, created automatically using the information in the custom commands above
+
+%----------------------------------------------------------------------------------------
+%	ASSIGNMENT CONTENT
+%----------------------------------------------------------------------------------------
+
+\section*{Purpose:}
+
+\begin{problem}
+	What is this book useful for?
+	\begin{enumerate}
+		\item What is C?
+		\item Why C?
+		\item What are the concepts in C and what can they be used for?
+	\end{enumerate}
+\end{problem}
+%---How to insert an image---&
+\begin{center}
+	\includegraphics[width=0.5\columnwidth]{template-meme.jpeg} % Example image
+\end{center}
+
+\section*{Question 2}
+
+\begin{problem}
+	How is C best utlised?	
+	\medskip
+	
+	\begin{enumerate}[(\itshape a\normalfont)] % Sub-questions styled as italic letters
+		\item Is it the best language?
+		\item Or should I rather learn to fish?
+	\end{enumerate}
+\end{problem}
+
+%------------------------------------------------
+
+\subsection*{Answer}
+
+\begin{enumerate}[(\itshape a\normalfont)] % Sub-questions styled as italic letters
+	\item Probably not.
+    
+	\item Very likley.
+\end{enumerate}
+
+%----------------------------------------------------------------------------------------
+
+\subsection*{SubSection:} 
+
+%----------------------------------------------------------------------------------------
+
+\section*{Code Block:}
+
+\begin{problem}
+	\lstinputlisting[
+		caption=Caption, % Caption above the listing
+		label=lst:luftballons, % Label for referencing this listing
+		language=C, % Specificies language in the block
+		frame=single, % Frame around the code listing
+		showstringspaces=false, % Don't put marks in string spaces
+		numbers=left, % Line numbers on left
+		numberstyle=\tiny, % Line numbers styling
+	]{template.c}
+	
+	\begin{enumerate}
+		\item What will the output of this code block be?
+		\item Output = "Hello, this is a template"
+	\end{enumerate}
+
+\end{problem}
+\clearpage
+%------------------------------------------------
+\subsection*{The notes start here}
+Keep in mind they are in no particular order!
+
+
+\section{Functions}
+
+\begin{problem}
+	The following questions/topics will be addressed:
+	\begin{enumerate}
+		\item What are functions?
+		\item How are functions utilised?
+		\item Examples of using functions.
+	\end{enumerate}
+\end{problem}
+\begin{center}
+	\includegraphics[width=0.5\columnwidth]{template-meme.jpeg} % Example image
+\end{center}
+
+%----------------------------------------------------------------------------------------
+\section*{Functions}
+Functions break large computing tasks into smaller ones. This helps make code 
+easier to change in the future and can also help  with readability. Appropriate 
+functions also hide details of operations from parts of the program that don't 
+need them. C programs generally consist of many small functions rather than fewer 
+large ones. The most basic example of a function is main(), every program has one 
+and it is executed before any other functions in the program. Functions can be 
+used for any task but generally it is best for each function to accomplish a 
+specific task. A function declaration provides the actual body of the function. \\
+
+The standard library provides numerous builtin functions that your program can call
+for example:
+\begin{enumerate}
+	\item strcat() to concatenate strings
+	\item memcpy() to copy the memory location of one parameter to another.
+\end{enumerate}
+
+
+\section*{A FUNCtional example:}
+
+\begin{problem}
+	\lstinputlisting[
+		caption=The following example shows a very basic use of functions in C. % Caption above the listing
+		label=Functions Example 1, % Label for referencing this listing
+		language=C, % Specificies language in the block
+		frame=single, % Frame around the code listing
+		showstringspaces=false, % Don't put marks in string spaces
+		numbers=left, % Line numbers on left
+		numberstyle=\tiny, % Line numbers styling
+	]{functions1.c}
+\end{problem}
+
+%------------------------------------------------
+
+The above example gives the user two choices and then asks for input. based on
+the input a specified function is called to output the relevant text. While the 
+use of functions is explicitly necessary in this example it shows how code can be
+broken up into smaller blocks, each with a specific purpose.
+
+\section*{Definining a function}
+
+Syntax:
+\begin{lstlisting}
+	return_type function_name(parameter list)
+	{
+		body of function
+	}
+\end{lstlisting}
+
+Here is a break down of each part of this syntax:
+
+\begin{enumerate}
+	\item return\_type: The type of value the function will return.
+	\item function\_name: Name of the function.
+	\item (parameter list): list of parameters passed to the function.
+	\item body of function: code to be executed
+\end{enumerate}
+
+Example:
+\begin{lstlisting}
+	int add(int a, int b)
+	{
+		int result = a + b;
+		return (result);
+	}
+\end{lstlisting}
+ 
+Break down:
+\begin{enumerate}
+	\item int: Return type of function (integer).
+	\item add: Name of function.
+	\item (int a, int b)\: parameters.
+	\item int result \= a + b: declare result variable and code that will be executed.
+	\item return (result)\: returns the value of the result variable.
+\end{enumerate}
+
+\textbf{Note:} if a function does not return anything it can be specified as void.
+
+Functions can be called from other parts of a program by using the function name 
+and passing in the required parameters.
+
+\begin{lstlisting}
+	int x = 5;
+	int y = 7;
+
+	int z = add(x, y);
+\end{lstlisting}
+The function 'add' is called with x and y as the parameters. The x parameter 
+will replace 'a' and 'y' will replace 'b'. The result is stored in 'z'.
+
+\section*{Function types}
+
+\begin{enumerate}
+	\item Functions that return a value:
+		Perform a specific task and return a value of a specific data type using 
+		the return statement. The previous "add" function is an example of this.
+	\begin{lstlisting}
+		char get_first_char(char *str)
+		{
+			return[0];
+		}
+	\end{lstlisting}
+	\item Functions that return nothing:
+	Perform a task but does not return any value.
+	\begin{lstlisting}
+		void print_hello()
+		{
+			printf("Hello, world!")
+		}
+	\end{lstlisting}
+	\item Functions that take no parameters:
+		Does not take any paramters but perfomrs a specific task.
+	\begin{lstlisting}
+		void clear_screen()
+		{
+			system("clear");
+		}
+	\end{lstlisting}
+	\item Functions that take parameters but return nothing.
+	\begin{lstlisting}
+		void greet(char *name)
+		{
+			printf("Hello, %s", name);
+		}
+	\end{lstlisting}
+\end{enumerate}
+
+\section*{Calling a function}
+When a function is called, control of the program is transferred to the function
+until it's return statement or closing brace is reached. Then the main() 
+function is used again.\\
+
+To call a function you need to pass the required parameters.\\
+
+Passing parameters to a function basically means providing values or variables
+to the function.
+
+Going back to the 'add' function as an example. \\
+x and y are the parameters that are passed to the function. When the function is
+called with arguments the values of the arguments are assigned to the corresponding
+parameters. So if we call the 'add' function with arguments 3 and 4 the values
+3 and 4 are assigned to x and y respectively.\\
+
+\section*{Function arguments}
+For a function to use arguments it must declare variables that accept the values
+of the arguments. These variables are called the formal parameters of a function.
+
+Formal parameters behave like other local variables and are created upon entry
+to the function and are destroyed upon exit.
+
+There are two ways arguments can be passed to a function:
+
+\subsection*{Call/Pass by value:}
+The function receives a copy of the argument passed, not the original argument.
+So any changes made to the argument inside the function do not change the original
+value of the argument.
+		
+
+\begin{problem}
+	\lstinputlisting[
+		caption=Call by value example, % Caption above the listing
+		language=C, % Specificies language in the block
+		frame=single, % Frame around the code listing
+		showstringspaces=false, % Don't put marks in string spaces
+		numbers=left, % Line numbers on left
+		numberstyle=\tiny, % Line numbers styling
+	]{functions3.c}
+	In this example the 'increment' function takes an integer argument ('x') 
+	and then increments it by one. The following main function calls the 
+	increment function and passes "num" to it. This does not change the output 
+	as the increment function does not change the original value "num".
+\end{problem}
+
+\subsection*{Call/Pass by reference:}
+Calling a function by reference involves passing arguments to a function using
+the parameters address. This way the actual value is changed, not just a copy
+of it.\\
+
+To pass a variable by reference in C, you must declare the function parameter 
+as a pointer type using the * operator.\\
+
+\clearpage
+
+The following example function takes a pointer to an integer as a parameter.
+
+
+\begin{problem}
+	\lstinputlisting[
+		caption=Call by reference example, % Caption above the listing
+		language=C, % Specificies language in the block
+		frame=single, % Frame around the code listing
+		showstringspaces=false, % Don't put marks in string spaces
+		numbers=left, % Line numbers on left
+		numberstyle=\tiny, % Line numbers styling
+	]{functions4.c}
+\end{problem}
+
+\textbf{Note:} by default C passes arguments by value.
+
+\clearpage
+
+\section*{Function Prototypes}
+
+\subsection*{What is a function prototype}
+A function prototype is a declaration of a function that describes the function's
+interface to the rest of the program. It specifies the function's name, return
+type and parameter types.\\
+
+These are usually specified at the beginning of a file before any other functions.
+
+Syntax:
+\begin{lstlisting}
+	return_type function_name(parameter_list);
+\end{lstlisting}
+
+For example:
+\begin{lstlisting}
+	int max(int numOne, int numTwo);
+\end{lstlisting}
+This prototype declares a funtion named max that takes two integer parameters.
+
+\subsection*{Why are function prototypes used?}
+
+\begin{enumerate}
+	\item Type checking: By declaring the function prototype before calling the 
+		function the compiler can check that the arguments passed to the function 
+		match the expected types.
+	\item Avoid implicit declaration: If a function is not given an implicit type 
+		the compiler assumes it is an integer, this can lead to misleading errors 
+		relating to different return types or number of arguments.
+	\item Optimization: Allows the compiler to generate more efficient code by
+		providing information about the function's interface. This can lead to
+		smaller, faster code.
+	\item Documentation: Can server as documentation for the function, making
+		it easier for other programmers to understand how to use a function.
+\end{enumerate}
+
+\section*{Pointers}
+
+\begin{problem}
+	\subsection*{Syntax:}
+	<type> *<name>
+\end{problem}
+
+\vspace{0.25cm}
+
+\begin{enumerate}
+	\item type = is the data type that the pointer will point to.
+	\item name = is the name of the pointer variable.
+\end{enumerate}
+
+\lstset{language=C}
+
+
+Example:
+To declare a pointer variable that will point to an integer value the 
+following syntax is used,
+\begin{lstlisting}
+	int *ptr;
+\end{lstlisting}
+This declares a pointer variable named "ptr" that can point to an integer 
+value.\\
+
+To assign  a value to a pointer variable the address-of operator (\&) is used 
+to get the memory address of the variable.\\
+
+Example:
+Assign the address of an intger variable named "x" to the pointer variable 
+"ptr",
+\begin{lstlisting}
+	int x = 10;
+	int *ptr = &x;
+\end{lstlisting}
+This assigns the address of "x" to "ptr", so now "ptr" points to x.
+To access the value that is stored at the memory location pointed to by a
+pointer variable the dereference operator is used (*).\\
+
+\section*{Concept}
+Pointers are a fundamental concept in the C programming language, 
+and understanding how they work is essential for writing efficient and 
+effective C code. A pointer is a variable that stores the memory address of 
+another variable. By using pointers, C programs can directly access and 
+manipulate the values of other variables in memory, providing a powerful tool 
+for building complex data structures and optimizing program performance.\\
+
+At its core, a pointer is simply a memory address. When you declare a pointer 
+variable in C, you are creating a variable that can store the address of 
+another variable in memory. To declare a pointer variable, you use the * 
+symbol before the variable name, like this: int *ptr;. This declares a pointer
+variable named ptr that can store the memory address of an integer variable.\\
+
+Once you have declared a pointer variable, you can use the \& operator to get 
+the memory address of another variable, and assign that address to the pointer
+variable using the assignment operator =. For example, if you have an integer 
+variable named x, you can get its memory address with \&x, and assign it to the 
+pointer variable ptr like this: ptr = \&x;. Now, ptr points to the memory 
+location of x, and you can use the pointer to access and manipulate the value 
+of x directly.\\
+
+One of the most common uses of pointers in C is to pass variables by 
+reference to functions. In C, when you pass a variable to a function as an 
+argument, the function gets a copy of the variable's value. However, by 
+passing the memory address of the variable instead, you can allow the function 
+to directly access and modify the variable's value. This can be useful for 
+functions that need to modify variables outside of their own scope.\\
+
+Another important use of pointers in C is for dynamic memory allocation. In C,
+you can use the malloc() function to allocate a block of memory of a specified 
+size at runtime. The malloc() function returns a pointer to the beginning of 
+the allocated memory block, which you can then use to access and manipulate 
+the memory. Once you are done with the memory, you should free it using the 
+free() function to avoid memory leaks.\\
+
+Pointers can also be used to create complex data structures in C, such as 
+linked lists, trees, and graphs. By using pointers to connect nodes together 
+in these structures, you can create efficient and flexible data structures 
+that can be easily traversed and manipulated.\\
+
+However, while pointers are a powerful tool in C programming, they can also be
+dangerous if used improperly. Pointer errors, such as dereferencing a null 
+pointer or accessing memory that has already been freed, can cause program 
+crashes or even security vulnerabilities. To avoid these errors, it is 
+important to carefully manage and validate pointers in your code, and to use 
+best practices for pointer manipulation, such as initializing pointers to null
+and checking for null before dereferencing them.\\
+
+In conclusion, pointers are a fundamental concept in C programming that allow 
+you to directly access and manipulate the values of variables in memory. 
+Pointers are used extensively in C for passing variables by reference, 
+dynamic memory allocation, and creating complex data structures. While 
+pointers can be a powerful tool, they can also be dangerous if used improperly,
+and it is important to carefully manage and validate pointers in your code to 
+avoid errors and vulnerabilities.\\
+
+
+\subsection*{Summary:}
+The syntax for a pointer consists of the data type followed by an asterisk
+and the name of the pointer variable. The address-of operator (\&) is used 
+to assign a value to the pointer, and the dereference operator (*) is 
+used to access the value stored at the memory location pointed to by the 
+pointer.
+
+\newpage
+\section*{Examples}
+
+\subsection*{How to use pointers:}
+
+\begin{problem}
+	\lstinputlisting[
+		caption=Pass variables by reference to functions:,
+		language=C, % Use Perl functions/syntax highlighting
+		frame=single, % Frame around the code listing
+		showstringspaces=false, % Don't put marks in string spaces
+		numbers=left, % Line numbers on left
+		numberstyle=\tiny, % Line numbers styling
+	]{how-to-pointers1.c}
+In this example, swap() is a function that takes two integer pointers as 
+arguments and swaps their values. By passing the memory addresses of a and b 
+to swap() using the \& operator, we allow the function to directly modify the 
+values of a and b.
+\end{problem}
+
+\begin{problem}
+	\lstinputlisting[
+		caption=Allocate memory dynamically:
+		language=C, % Use Perl functions/syntax highlighting
+		frame=single, % Frame around the code listing
+		showstringspaces=false, % Don't put marks in string spaces
+		numbers=left, % Line numbers on left
+		numberstyle=\tiny, % Line numbers styling
+	]{how-to-pointers2.c}
+In this example, we use the malloc() function to dynamically allocate an array 
+of 10 integers, and store its memory address in the pointer variable arr. We 
+then use a loop to assign the values 0 to 9 to the array elements. Finally, we
+use the free() function to release the allocated memory.
+\end{problem}
+
+\begin{problem}
+	\lstinputlisting[
+		caption=Access out-of-bounds memory:
+		language=C, % Use Perl functions/syntax highlighting
+		frame=single, % Frame around the code listing
+		showstringspaces=false, % Don't put marks in string spaces
+		numbers=left, % Line numbers on left
+		numberstyle=\tiny, % Line numbers styling
+	]{how-not-pointers1.c}
+In this example, we declare a pointer variable ptr and assign it the null 
+value using the NULL macro. However, we then attempt to assign the value 5 to 
+the memory location pointed to by ptr, which is an invalid operation because 
+ptr is null and does not point to a valid memory location.
+\end{problem}
+
+\begin{problem}
+	\lstinputlisting[
+		caption=Access out-of-bounds memory:
+		language=C, % Use Perl functions/syntax highlighting
+		frame=single, % Frame around the code listing
+		showstringspaces=false, % Don't put marks in string spaces
+		numbers=left, % Line numbers on left
+		numberstyle=\tiny, % Line numbers styling
+	]{how-not-pointers2.c}
+In this example, we declare an integer array arr with 5 elements, and create 
+a pointer variable ptr that points to the first element of the array. However,
+we then use a loop to increment the pointer variable ptr 10 times, and attempt 
+to print the value pointed to by ptr at each iteration. This is an invalid 
+operation because ptr eventually points to memory outside the bounds of the 
+arr array, which can cause undefined behavior or program crashes.
+
+\end{problem}
+
+\newpage
+
+\section*{Arrays:}
+Arrays consist of contigous memory locatios. The lowest address corresponds to 
+first element and the highest address to the last element.
+\begin{problem}
+	\subsection*{Syntax:} 
+	\begin{lstlisting}
+		type arrayName[arraySize] = size;
+	\end{lstlisting}
+\end{problem}
+
+\subsection*{Initializing arrays:}
+Below is an example of initializing an array called balance with 5 indexes.
+\begin{lstlisting}
+	double balance[5] = {1000.0, 2.0, 3.4, 7.0, 50.0};
+\end{lstlisting}
+\textbf{Note} the number of indexes inside the \{ \} cannot be bigger than the 
+specified size inside the [ ]. So in the above example the indexes cannot 
+number more than 5.\\ \\
+
+
+An array can also be initialized by excluding the size in the [ ]. 
+For example:
+\begin{lstlisting}
+	double balance[] = {1000.0, 2.0, 3.4, 7.0, 50.0};
+\end{lstlisting}
+This creates an array just big enough to store indexes.
+
+You can also asign values to indexes individually:
+\begin{lstlisting}
+	double balance[4] = 50.0;
+\end{lstlisting}
+This will assign the 5th index a value of "50.0".
+
+In the below table the array is broken down into the index number and their 
+corresponding value. \\
+\begin{center}
+	\begin{tabular}{||c | c | c | c | c | c ||} 
+		\hline
+		Index: & 0 &  1 & 2 & 3 & 4 \\ 
+		\hline
+		Value: & 1000.0 & 2.0 & 3.4 & 7.0 & 50.0 \\ 
+		\hline
+	\end{tabular}
+\end{center}
+
+\subsection*{Accessing Array Indexes:}
+An index/element is accessed refrencing the array name. This is done by placing 
+the index of the element after the array name.
+\begin{lstlisting}
+	double salary = balance[9]
+\end{lstlisting}
+The above statement assigns the value of the 10th index in the balance array 
+to the salary variable.
+
+\begin{problem}
+	\lstinputlisting[
+		caption=This code block shows examples of how to use the above mentioned concepts.,
+		language=C, % Use Perl functions/syntax highlighting
+		frame=single, % Frame around the code listing
+		showstringspaces=false, % Don't put marks in string spaces
+		numbers=left, % Line numbers on left
+		numberstyle=\tiny, % Line numbers styling
+	]{arrays-example-1.c}
+	Output:\\
+	Element[0] = 100\\
+	Element[1] = 101\\
+	Element[2] = 102\\
+	Element[3] = 103\\
+	Element[4] = 104\\
+	Element[5] = 105\\
+	Element[6] = 106\\
+	Element[7] = 107\\
+	Element[8] = 108\\
+	Element[9] = 109
+\end{problem}
+
+The following are essential for understanding arrays in C:
+\begin{enumerate}
+	\item C supports multidimensional arrays. The simplest version of the multidimensional array is the two dimensional array. 
+		Example:
+		\begin{lstlisting} 
+	char arrayName[] = "arrayText"; 
+		\end{lstlisting}
+	\item It is possible to pass to the function a pointer to an array by specifying the array's name without an index.
+	\item C allows a function to return an array.
+	\item You can generate a pointer to the first element of an array by simply specifying the array name, without any index.
+\end{enumerate}
+
+\newpage
+
+\section*{Strings}
+In C, strings are declared using a one dimensional array, terminated by a null 
+character '\textbackslash0'. Therefore a 'null-terminated' string contains the 
+string indexes followed by a null.\\
+
+The following example shows how a string is declared, note that the array size 
+is increased to account for the '\textbackslash0' character.
+\begin{lstlisting}
+char greeting[6] = {'H', 'e', 'l', 'l', 'o', '\textbackslash0'};
+\end{lstlisting}
+The same array can be declared by doing the following:
+\begin{lstlisting}
+char greeting[] = "Hello";
+\end{lstlisting}
+As you can see declaring the null character is not neccessary. The compiler does 
+this for you. When the compiler reaches a null character it will initialize the array.
+
+\begin{problem}
+	\lstinputlisting[
+		caption=The below code shows the two different ways to declare a string (using an array)\, as you will see the second is more efficient. ,
+		language=C, % Use Perl functions/syntax highlighting
+		frame=single, % Frame around the code listing
+		showstringspaces=false, % Don't put marks in string spaces
+		numbers=left, % Line numbers on left
+		numberstyle=\tiny, % Line numbers styling
+		]{strings-1.c}
+		Output:\\
+		Hello\\
+		Hello
+\end{problem} 
+
+
+C has various functions that allow you to manipulate strings, here are a few of the most common:
+\begin{center}
+\begin{tabular}{||c | c ||}
+ \hline
+ Function: & Use: \\
+ \hline\hline
+ strcpy(s1, s2) & Copies string s2 into string s1 \\
+ \hline
+ strcat(s1, s2) & Concatenates string s2 onto the end of string s1 \\
+ \hline
+ strlen(s1) & Returns the length of string s1 \\
+ \hline
+ strcmp(s1, s2) & Returns 0 if s1 and s2 are the same; less than 0 if s1 < s2; \\ 
+  & greater than if s1 > s2. \\
+ \hline
+ strchr(s1, ch) & Returns a pointer to the first occurrence of character ch in string s1. \\
+ \hline
+ strstr(s1, s2) & Returns a pointer to the first occurrence of string s2 in string s1 \\
+ \hline 
+\end{tabular}
+\end{center}
+
+\begin{problem}
+	\lstinputlisting[
+		caption=The following code shows examples of how to use some of the above mentioned functions.
+		language=C, 
+		frame=single, % Frame around the code listing
+		showstringspaces=false, % Don't put marks in string spaces
+		numbers=left, % Line numbers on left
+		numberstyle=\tiny, % Line numbers styling
+		]{strings-2.c}
+Output: \\
+strcpy: Hello \\
+strcat: Hello world \\
+strlen: 11
+\end{problem} 
+
+
+
+
+
+
+\clearpage
+%---W16---%
+
+\section{Structures and typedef}
+
+\subsection{Resources}
+\begin{problem}
+	\begin{enumerate}
+		\item struct (C programming language) (wiki)
+	\end{enumerate}
+\end{problem}
+
+\subsubsection{struct}
+\par A struct is a composite data type\footnote{A data type that combines 
+several values or variables into a single entity, examples include arrays and 
+structures} declaration that defines a physically grouped
+list of variables under one name in a block of memory. This allows different 
+variables to be accessed via a single pointer or by the struct declared name 
+which returns the same address.\\
+
+\par A struct directly references a contigious block\footnote{A block of 
+memory where all bytes are stored consecutively, with no gaps between them.} of physical memory, usually
+sized by word-length boundaries. Being a block of contigious memory each field
+within a struct is located at a certain fixed offset from the start.\\
+
+\par Thus the 'sizeof' operator must be used to get the number of bytes needed to
+store a particular type of struct, just as it can be used for primitives\footnote{A primitive is any basic data type}.\\
+
+\par The syntax for a struct is as follows:\\
+\begin{lstlisting}
+	struct tag_name
+	{
+		type memberOne;
+		type memberTwo;
+	};
+\end{lstlisting}
+Similar syntax is used in the context of a 'typedef' declaration of a type alias
+or the declaration or definition of a variable:\\
+\begin{lstlisting}
+	typedef struct tag_name
+	{
+		type memberOne;
+		type memberTwo;
+	} struct_alias;
+\end{lstlisting}
+
+\par There are 3 ways to initialize a structure:
+\begin{enumerate}
+	\item Declare the struct with integer members.
+		\begin{lstlisting}
+		struct point
+		{
+			int x;
+			int y;
+		};
+		\end{lstlisting}
+	\item Define a variable 'p' of type point and initialize it's first two members in place
+		\begin{lstlisting}
+		struct point p = { 1, 2 };
+		\end{lstlisting}
+	\item For non contiguous or out of order members list, designated initializer style mayb be used
+		\begin{lstlisting}
+		struct point p = { .y = 2, .x = 1 };
+		\end{lstlisting}
+	\item If an initializer is given or if the pbject is statically allocated, omitted elements are initiliazed to 0.
+		A third way of initializing a structure is to copy the value of an existing object of the same type
+		\begin{lstlisting}
+		struct point q = p;
+		\end{lstlisting}
+\end{enumerate}
+
+\par A struct may be assigned to another struct. For example a compiler might use memcpy() to perform such an assignment.
+\begin{lstlisting}
+	struct point
+	{
+		int x;
+		int y;
+	};
+
+	int main(void)
+	{
+		struct point p = {1, 3};
+		struct point q;
+		q = p;
+		return (0);
+	}
+\end{lstlisting}
+
+Pointers can also be used to refer to a struct by it's address. This is useful for
+passing structs to a function. The pointer can be dereferemced using the * operator.
+The -> operator dereferences the pointe to struct (left operand) and then accesses
+the value of a member of the struct (right operand).
+\begin{lstlisting}
+	struct point
+	{
+		int x;
+		int y;
+	};
+
+	struct point my_point = {3, 7};
+	struct point *p = &my_point; //p is a pointer to my_point
+	(*p).x = 8; //set the first member of the struct
+	p->x = 8; //equivalent method to set the first 
+				//member of the struct
+\end{lstlisting}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
