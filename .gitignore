@@ -1,3 +1,5 @@
+*.pl
+*.cls
 *.aux
 *.fdb_latexmk
 *.fls
@@ -7,3 +9,4 @@
 !*.tex
 !*.pdf
 *.c
+*.jpg
