@@ -26,3 +26,7 @@ spend all my time on Japanese I do it as a passion project.
 
 ## Math Notebook:
 This probably won't be updated often, due to me being a bit too busy right now to also study math.
+
+## Some screenshots:
+![Cover page example](coverpageScreenshot.png)
+![C-Notebook example](c-notebook-example.png)
