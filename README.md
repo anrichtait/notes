@@ -16,6 +16,11 @@ To make common tasks (inserting code blocks, images and paragraphs, etc) quicker
 I use that make these tasks almost instant. This is how I am able to write notes fast and on the fly.
 I will include these snippets in my neovim config some time (maybe).
 
+## The Japanese:
+As you will see in the screenshots below I use a neat bit of software called (Tagaini Jisho)[https://www.tagaini.net/].
+I hope to get a Japanese keyboard soon but for now this will do. Any way if you want to use those notes make sure you
+have the relevant packages installed.
+
 # The notebooks:
 ## C-Notebook:
 I am currently studying Software Engineering and one of the focus languages is C, so this notebook is for that.
@@ -30,3 +35,4 @@ This probably won't be updated often, due to me being a bit too busy right now t
 ## Some screenshots:
 ![Cover page example](coverpageScreenshot.png)
 ![C-Notebook example](c-notebook-example.png)
+![Japanese Notebook example](japanese-notebook-example.png)
