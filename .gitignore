@@ -13,3 +13,7 @@ main.pdf
 !*.pdf
 *.c
 *.jpg
+C-Notebook-old
+*.out
+*.xdv
+
