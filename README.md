@@ -29,8 +29,12 @@ I am currently studying Software Engineering and one of the focus languages is C
 Studying is hard but I find that spending time focused on something I enjoy is very important, so while I don't 
 spend all my time on Japanese I do it as a passion project.
 
+## Bash Notebooks:
+Part of my software engineering studies. 
+
 ## Math Notebook:
 This probably won't be updated often, due to me being a bit too busy right now to also study math.
+I now have to different notebooks, the normal math and discrete math, this will soon be updated to include a linear algebra book as well.
 
 ## Some screenshots:
 ![Cover page example](coverpageScreenshot.png)
