@@ -1,0 +1,73 @@
+%%% Basic document setup %%%
+\documentclass[12pt, letterpaper]{report}
+\title{Template}
+\author{Anrich Tait}
+\date{\today}
+
+
+%%% Packages %%%
+\usepackage{graphicx}	%%% Include images
+\graphicspath{{images/}}%%% Where your images are stored (relative to main file)
+\usepackage{xeCJK}		%%% Include japanese/chinese/korean
+\usepackage{amsmath} 	%%% Math related
+\usepackage{xcolor}
+\usepackage{float}
+\usepackage{geometry}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+\usepackage{listings}
+\setCJKmainfont{Source Han Sans JP}
+\setCJKsansfont{Source Han Sans JP}
+\definecolor{titlepagecolor}{cmyk}{1,.60,0,.40}
+\definecolor{namecolor}{cmyk}{1,.50,0,.10}
+\hypersetup{colorlinks=true,linkcolor=black,filecolor=magenta,urlcolor=cyan}
+
+\begin{document}
+
+\begin{titlepage}
+\newgeometry{left=7.5cm} %defines the geometry for the titlepage
+\pagecolor{titlepagecolor}
+\noindent
+\color{white}
+\makebox[0pt][l]{\rule{1.3\textwidth}{1pt}}
+\par
+\noindent
+\textbf{\textsf{コース:}} \textcolor{namecolor}{\textsf{Math self-study}}
+\vfill
+\noindent
+{\huge \textsf{Discrete Mathematics Notebook}}
+\vskip\baselineskip
+\noindent
+\textsf{作家: Anrich Tait}
+\end{titlepage}
+\restoregeometry % restores the geometry
+\nopagecolor% Use this to restore the color pages to white
+
+\tableofcontents
+\begin{abstract}
+My Discrete Mathematics self-study notes and excercises.
+\end{abstract}
+
+\chapter{Sets, Sequences and functions}
+
+\section{Some Special Sets}
+Set theory is used as the underlying basis for Mathematics.
+Set theory defines a "set" as collection of objects. Sets are denoted using 
+capital letters such as A, B, S or X.\\\\
+
+An object that belongs to a set is a called a member/element of that set. For 
+example if 'a' is an object and A is a set we can denote it by writing:\\
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

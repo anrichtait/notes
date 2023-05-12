@@ -1,6 +1,7 @@
 main.pdf
 *a.out
 *.jpeg
+*.png
 *.pl
 *.cls
 *.aux

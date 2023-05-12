@@ -1,0 +1,371 @@
+%%% Basic document setup %%%
+\documentclass[12pt, letterpaper]{report}
+\title{Template}
+\author{Anrich Tait}
+\date{\today}
+
+
+%%% Packages %%%
+\usepackage{graphicx}	%%% Include images
+\graphicspath{{images/}}%%% Where your images are stored (relative to main file)
+\usepackage{xeCJK}		%%% Include japanese/chinese/korean
+\usepackage{amsmath} 	%%% Math related
+\usepackage{xcolor}
+\usepackage{float}
+\usepackage{geometry}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+\usepackage{listings}
+\setCJKmainfont{Source Han Sans JP}
+\setCJKsansfont{Source Han Sans JP}
+\definecolor{titlepagecolor}{cmyk}{1,.60,0,.40}
+\definecolor{namecolor}{cmyk}{1,.50,0,.10}
+\hypersetup{colorlinks=true,linkcolor=black,filecolor=magenta,urlcolor=cyan}
+
+\begin{document}
+
+\begin{titlepage}
+	\newgeometry{left=7.5cm} %defines the geometry for the titlepage
+	\pagecolor{titlepagecolor}
+	\noindent
+	\color{white}
+	\makebox[0pt][l]{\rule{1.3\textwidth}{1pt}}
+	\par
+	\noindent
+	\textbf{\textsf{コース:}} \textcolor{namecolor}{\textsf{ALX Software Engineering}}
+	\vfill
+	\noindent
+	{\huge \textsf{Bash Notebook}}
+	\vskip\baselineskip
+	\noindent
+	\textsf{作家: Anrich Tait}
+\end{titlepage}
+\restoregeometry % restores the geometry
+\nopagecolor% Use this to restore the color pages to white
+
+\begin{abstract}
+	My notes on the bash shell, this will also include some useful information 
+	regarding Unix systems. Most of my learning in this regard was in relation
+	to my software engineering studies.
+\end{abstract}
+
+\tableofcontents
+
+\chapter{Shell Basics}
+
+\section{Objectives}
+\begin{enumerate}
+	\item What is the shell?
+	\item Navigation.
+	\item Looking around
+	\item A guided tour
+	\item Manipulating files
+	\item Working with commands
+	\item Reading man pages
+	\item Keyboard shortcuts
+	\item LTS
+	\item Shebang
+\end{enumerate}
+
+\section{Resources}
+\begin{enumerate}
+	\item \href{http://linuxcommand.org/lc3_lts0010.php}{What is the shell?}
+	\item \href{https://intranet.alxswe.com/rltoken/iblidp7yp6i-QpT8rDXHaA}{Navigation}
+	\item \href{https://intranet.alxswe.com/rltoken/xEKUCnQsMH0esQ6fJU5vLA}{Looking around}
+	\item \href{https://intranet.alxswe.com/rltoken/HUhQ73fFR1GOC5nb4r-mDw}{A guided tour}
+	\item \href{https://intranet.alxswe.com/rltoken/olv-1tj4d1LA57Z0PrLNvw}{Manipulating files}
+	\item \href{https://intranet.alxswe.com/rltoken/zUtux3Pm0BkvtwXzbTtkmA}{Working with commands}
+	\item \href{https://intranet.alxswe.com/rltoken/rddGdsqLf8_kRzp12RaD4A}{Reading man pages}
+	\item \href{https://intranet.alxswe.com/rltoken/AGxMxuS5IeW8VmEvJyhwvw}{Keyboard shortcuts}
+	\item \href{https://wiki.ubuntu.com/LTS}{LTS}
+	\item \href{https://intranet.alxswe.com/rltoken/cE8ZA3kgEaFhB-IDNv31bQ}{Shebang}
+\end{enumerate}
+
+\subsection*{Man Pages}
+cd, ls, pwd, less, file, ln, cp, mv, rm, mkdir, type, which, help, man
+
+\clearpage
+\section{Notes}
+
+\subsection{What is the shell?}
+The shell is a command line interface (CLI) that takes commands and passes them
+to this operating system.\\\\
+
+Bash is the most common example of a shell program, others include: ksh, tcsh
+and zsh.\\
+
+Most interactions with the shell are done through a terminal like gnome, alacritty
+or kitty. \\
+
+\textbf{NOTE:}Make sure that the last symbol of your shell prompt is not \#. If it is
+this means that you are in sudo (super user) mode and this can be dangerous.
+
+\subsection{Navigation}
+Nothing much here for me to learn, maybe important to note thoguh:\\
+Important facts about file names:
+\begin{enumerate}
+	\item File names that begin with a period character are hidden. This only means that ls will not list them unless we say ls -a. When your account was created, several hidden files were placed in your home directory to configure things for your account. Later on we will take a closer look at some of these files to see how you can customize our environment. In addition, some applications will place their configuration and settings files in your home directory as hidden files.
+
+	\item File names in Linux, like Unix, are case sensitive. The file names "File1" and "file1" refer to different files.
+
+	\item Linux has no concept of a "file extension" like Windows systems. You may name files any way you like. However, while Linux itself does not care about file extensions, many application programs do.
+
+	\item Though Linux supports long file names which may contain embedded spaces and punctuation characters, limit the punctuation characters to period, dash, and underscore. Most importantly, do not embed spaces in file names. If you want to represent spaces between words in a file name, use underscore characters. You will thank yourself later.
+\end{enumerate}
+
+\subsection{Looking around}
+\textbf{A closer look at the long format: ls -l}
+
+\includegraphics[width=0.75\textwidth]{ls}
+
+\begin{itemize}
+	\item File name: Name of file or directory
+	\item Modification time: Last time the file was modifified
+	\item Size: size of the file in bytes
+	\item Group: Group that has file permissions other than the file owner
+	\item Owner: The user that owns the file.
+	\item File Permissions: A representaion of the file's access permissions.
+		The first character is the file type, "-" indicates a regular or 
+		ordinary file. A "d" indicates a directory. The second character represents
+		the read, write and execution rights of the file owner. The third represents 
+		the rights of the file's group. The last represents the permissions granted
+		to everyone else.
+\end{itemize}
+
+\begin{center}
+	\begin{tabular}[c]{l|l}
+		\hline
+		\multicolumn{1}{c|}{\textbf{Directory}} & 
+		\multicolumn{1}{c}{\textbf{Description}} \\
+		\hline
+		\hline
+		/ & The root directory where the file system begins.\\
+		\hline
+		/boot & Linux kernel and bootloader directory. The kernel is a file called vmlinuz.\\
+		\hline
+		/etc & Configuration files, important locations include: /etc/passwd - user info, /etc/fstab \\
+			 & - mounted devices(disk drives), /etc/hosts - Network host names and IP adresses, /etc/init.d \\
+			 & - system service scripts run at boot time.\\
+			 \hline
+		/bin, /usr/bin & Most of the system programs.\\
+		\hline
+		/usr & folders/files that support user applications\\
+		\hline
+		/usr/local & Used for installation of software (user). Most commononly in /usr/local/bin\\
+		\hline
+		/var & Files that change as the system runs, including logs and spools.\\
+		\hline
+		/lib & The shared libraries\\
+		\hline
+		home & user files\\
+		\hline
+	\end{tabular}
+\end{center}
+
+The list goes on and on, do research to find specific files.
+
+\subsection{Manipulating Files}
+\textbf{Commands to know/understand:}
+\begin{enumerate}
+	\item cp: copy files and directories
+	\item mv: move or rename files and directories
+	\item rm: remove files and directories
+	\item mkdir: make directories
+\end{enumerate}
+
+\textbf{Wildcards:}
+Wildcards allow the user to specify groups of filenames. This makes mass file
+manipulation much easier.
+\begin{center}
+	\begin{tabular}[c]{l|l}
+		\hline
+		\multicolumn{1}{c|}{\textbf{Wildcard}} & 
+		\multicolumn{1}{c}{\textbf{Meaning}} \\
+		\hline
+		\hline
+		* & Matches any characters \\
+		\hline
+		? & Matches any single character \\
+		\hline
+		characters & Matches any character that is part of the set characters.\\
+		\hline
+		!characters & Matches any character that is not a member of the set characters\\
+		\hline
+	\end{tabular}
+\end{center}
+
+Here are some examples of patterns and what they match.
+\begin{center}
+	\begin{tabular}[c]{l|l}
+		\hline
+		\multicolumn{1}{c|}{\textbf{Pattern}} & 
+		\multicolumn{1}{c}{\textbf{Matches}} \\
+		\hline
+		* & All filenames \\
+		\hline
+		g* & All filenames that begin with the character "g" \\
+		\hline
+		b*.txt & All filenames that begin with "b" and end with ".txt"\\
+		\hline
+		Data??? & Any filename that begins with the characters "data" \\&followed by any other characters.\\
+		\hline
+	\end{tabular}
+\end{center}
+
+\section{Working with commands}
+\textbf{Commands to know/understand}
+\begin{enumerate}
+	\item type: Display information about command type
+	\item which: Locate a command
+	\item help: Display reference page for shell builtin
+	\item man: Display an on-line command reference
+\end{enumerate}
+
+\textbf{What are "Commands"}\\
+Commands fall into 4 categories:
+\begin{enumerate}
+	\item Executable programs: programs that can be executed
+	\item A command built into the shell: or "shell builtins. Like, "cd"
+	\item A shell function: Miniature shell scripts.
+	\item An alias: Commands that the user defines, built from other commands.
+\end{enumerate}
+
+\clearpage
+\chapter{Shell permissions}
+\section{Resources}
+\begin{enumerate}
+	\item \href{http://linuxcommand.org/lc3_lts0090.php}{Permissions}
+\end{enumerate}
+
+\textbf{man or help pages:}
+\begin{enumerate}
+	\item chmod - modify file access rights
+	\item sudo - enter super user mode or execute a command as such
+	\item su - temporarily enter sudo mode
+	\item chown - change file ownership
+	\item chgrp - change a file's group ownership
+	\item id - print effective user and group IDs
+	\item groups - display current group names
+	\item whoami - print effective username
+	\item adduser - ?
+	\item useradd - create a new user or update default new user info
+	\item addgroup - ?
+\end{enumerate}
+
+\section{Permissions Notes}
+Each file/directory is assigned access rights for the owner of the file, members
+of a group of related users and everybody outside of the afore-mentioned groups.\\\\
+Rights can be assigned to read, write and execute a file.\\\\
+
+As an example the ls command will be used to look at the 'bash' program located in
+the /bin directory:\\
+\begin{center}
+\includegraphics[width=0.75\textwidth]{ls-bin}
+\end{center}
+
+Here we can see:
+\begin{enumerate}
+	\item The file "/bin/bash" is owned by user 'root'
+	\item  The superuser has the right to read, write and execute
+	\item The file is owned by the group "root"
+	\item Members of the group 'root' can also read and execute
+	\item Everybody else can read and execute the file
+\end{enumerate}
+Below is graphic showing what each portion of the first listing represents:\\
+\begin{center}
+\includegraphics[width=0.75\textwidth]{permissions-one}
+\end{center}
+
+\section{Look at all the pretty commands}
+\subsection{chmod}
+Used to change the permissions of a file or directory. To use it specify the 
+desired permission settings and the file or files that are to be modified.\\
+There are two ways to do this, the following method uses the octal notation
+method.\\\\
+
+Think of the permission settings as a series of bits (like a computer):
+\begin{center}
+\includegraphics[width=0.50\textwidth]{octal-notation}
+\end{center}
+No we can represent each of the three sets of permissions, (owner, group and other)
+as a single digit to create a convenient way of expressions the permission settings.\\\\
+
+For example to set the permissions of a file to have read and write permission for the owner,
+but wanted to keep the file private from others we would use:\\
+\begin{center}
+\includegraphics[width=0.40\textwidth]{chmod-600}
+\end{center}
+
+\clearpage
+\textbf{File Permissions:}\\
+Below is a table of common settings for files, the ones starting with '7' are used with programs
+since they enable execution. The rest are other kinds of files:
+\begin{enumerate}
+	\item 777 - (rwxrwxrwx) No restrictions on permissions, All groups can do everythin. (BE WARNED)
+	\item 755 - (rwxr-xr-x) File owner can read, write and exec, All others may read and exec.
+	\item 700 - (rwx------) File woner can read, write and exec. Nobody else can do anything.
+	\item 666 - (rw-rw-rw-) All users may read and write the file.
+	\item 644 - (rw-r--r--) File owner may read and write, others can only read.
+	\item 600 - (rw-------) Owner can read and write a file. All other have no rights.
+\end{enumerate}
+
+\textbf{Directory Permissions:}\\
+The chmod command can also be used to change directory permissions.\\
+In this case octal notation is also used but the r, w and x meanings
+are different:
+\begin{enumerate}
+	\item r - Allows the contents of the directory to be listed if the x attribute is also set
+	\item w - Allows files within the directory to be created, deleted or renamed if the x attribute is also set
+	\item x - Allows a directory to be entered (cd dir)
+\end{enumerate}
+Here are some common settings for directories:
+\begin{enumerate}
+	\item 777 - (rwxrwxrwx) No restrictions on permissions. Anybody may list files, create new files in the directory and delete files in the directory. Generally not a good setting.
+	\item 755 - (rwxr-xr-x) The directory owner has full access. All others may list the directory, but cannot create files nor delete them.
+	\item 700 - (rwx------) The directory owner has full access. Nobody else has any rights. This setting is useful for directories that only the owner may use and must keep private.
+\end{enumerate}
+
+\subsection{chown}
+Change file ownership.\\
+Example:\\
+Change the owner of some\_file from "me" to "you":
+\begin{center}
+\includegraphics[width=0.40\textwidth]{chown}
+\end{center}
+
+\subsection{chgrp}
+Change the group ownership of a file or directory.\\
+Example:\\
+\begin{center}
+\includegraphics[width=0.40\textwidth]{chgrp}
+\end{center}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
