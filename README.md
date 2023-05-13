@@ -3,6 +3,8 @@ This repo is basically my school backpack, it contains all my digital notebooks 
 
 I created this repo to both keep all my notes saved somewhere and to share them with anyone interested.
 
+Join my study group on discord or just come hang out with me: https://discord.gg/HdsMTrUGau
+
 # Explanation:
 I write all my notes in Latex, obviously this can be tedious and take longer than hand writing them. 
 Therefore I have made it easier in a couple of ways:
