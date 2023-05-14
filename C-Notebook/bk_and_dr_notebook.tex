@@ -68,20 +68,43 @@
 	\item The reason for multiplying by 5 and then dividing by 9 instead of just multiplying by 5/9 is that integer division is truncated.
 		(any fractional part is discarded)
 \end{enumerate}
+
 The code should look something like this
+
 \lstinputlisting[
-		caption=Template Code Block, % Caption above the listing
-		label=lst:template, % Label for referencing this listing
-		language=C, % Specificies language in the block
-		frame=single, % Frame around the code listing
-		showstringspaces=false, % Don't put marks in string spaces
-		numbers=left, % Line numbers on left
-		numberstyle=\tiny, % Line numbers styling
-	]{programs/fahr-celc.c}
-	This is a very basic example of how code blocks will look in the document.
+caption=Fahr celcius table implementation,
+language=C, % Specificies language in the block
+frame=single, % Frame around the code listing
+showstringspaces=false, % Don't put marks in string spaces
+numbers=left, % Line numbers on left
+numberstyle=\tiny, % Line numbers styling
+]{programs/fahr-celc.c}
 
+The above temperature converter makes use of a while loop and 3 different variables.
+This code works and outputs the expected result but can also be written many other ways.
+One way to write it would be with a for loop.
 
+\lstinputlisting[
+caption=Fahr celsius table with a for loop,
+language=C, % Specificies language in the block
+frame=single, % Frame around the code listing
+showstringspaces=false, % Don't put marks in string spaces
+numbers=left, % Line numbers on left
+numberstyle=\tiny, % Line numbers styling
+]{programs/fahr-celc.c}
 
+\section{Excercise 1-5}
+\textbf{Task:} Modify the temperature conversion program to print the table in
+reverse order, from 300 degrees to 0.
+
+\lstinputlisting[
+caption=Excericise 1-5,
+language=C, % Specificies language in the block
+frame=single, % Frame around the code listing
+showstringspaces=false, % Don't put marks in string spaces
+numbers=left, % Line numbers on left
+numberstyle=\tiny, % Line numbers styling
+]{programs/fahr-celc.c}
 
 
 

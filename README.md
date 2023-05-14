@@ -18,11 +18,6 @@ To make common tasks (inserting code blocks, images and paragraphs, etc) quicker
 I use that make these tasks almost instant. This is how I am able to write notes fast and on the fly.
 I will include these snippets in my neovim config some time (maybe).
 
-## The Japanese:
-As you will see in the screenshots below I use a neat bit of software called (Tagaini Jisho)[https://www.tagaini.net/].
-I hope to get a Japanese keyboard soon but for now this will do. Any way if you want to use those notes make sure you
-have the relevant packages installed.
-
 # The notebooks:
 ## C-Notebook:
 I am currently studying Software Engineering and one of the focus languages is C, so this notebook is for that.
@@ -42,3 +37,22 @@ I now have to different notebooks, the normal math and discrete math, this will 
 ![Cover page example](coverpageScreenshot.png)
 ![C-Notebook example](c-notebook-example.png)
 ![Japanese Notebook example](japanese-notebook-example.png)
+
+## My study workflow: SQ3R
+1. Create or enter the relevant notebook.
+2. Open the relevant textbook.
+3. Flip through each page of the chapter. Asses:
+    - How long is the chapter?
+    - What jumps out at you?
+    - What should you expect from the upcoming chapter?
+4. Check for a quiz at the end of the chapter.
+    - This can give you an idea of what information to look for.
+5. Start from the beginning of the chapter and read all the bold print.
+6. Start from the beginning of the chapter and read the first and last sentence
+of each paragraph.
+7. Read the chapter and take notes.
+    - When taking notes do your best to summarize the information.
+    - Verbatim facts (understand the concept first) or mnemonics
+    - Put concepts in your own words.
+    - Write notes on the entire chapter and then do the excercises and examples. 
+    This lets you check for holes in understanding.
