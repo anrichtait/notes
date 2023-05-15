@@ -340,6 +340,149 @@ Example:\\
 \includegraphics[width=0.40\textwidth]{chgrp}
 \end{center}
 
+\chapter{Shell, I/O Redirections and filters}
+\section{Learning objectives}
+\begin{enumerate}
+	\item Understanding Shell, I/O Redirection
+	\item What are special characters and what to do with white spaces, single 
+		quotes, double quotes, backslash, comment, pipe, command seperator, tilde.
+	\item How to concatenate files and print on the standard output
+	\item How to reverse a string
+	\item How to remove sections from each line of files
+	\item what is the /etc/passwd file and it's format
+	\item what is the /etc/shadow file and what is it's format
+\end{enumerate}
+
+\section{Resources and man pages}
+\textbf{Links:}
+\begin{enumerate}
+	\item \href{http://linuxcommand.org/lc3_lts0070.php}{Shell I/O Redirection}
+	\item \href{http://mywiki.wooledge.org/BashGuide/SpecialCharacters}{Special characters}
+\end{enumerate}
+
+\textbf{man pages}
+\begin{enumerate}
+	\item echo
+	\item cat
+	\item head
+	\item tail
+	\item find
+	\item wc
+	\item sort
+	\item uniq
+	\item grep
+	\item tr
+	\item rev
+	\item out
+	\item passwd (man 5 passwd)
+\end{enumerate}
+
+\section{I/O Redirection}
+I/O redirection is another way of saying input and output redirection, specifically
+how a user can redirect a command's output to a file, device and other commands.\\\\
+
+\subsection{Standard Output Redirection}
+Most command line program send their results to the standard output, by default 
+the standard output directs it's contents to the display.\\\\
+
+One way the user can redirect this standard output is by using the '>' characters.
+\begin{lstlisting}[language=Bash,framexleftmargin=5mm,frame=single,xleftmargin=18pt]
+$ ls > file file_list.txt
+\end{lstlisting}
+In the above example the ls command is executed and the results are outputted 
+to a file named file\_list.txt. Since the ls output was redirected to a file, no 
+output will be displayed in the terminal.\\\\
+
+In the above example every time the command is run file\_list.txt will be overwritten, 
+we can append the output (add to end of file) by using two '>>' characters.
+\begin{lstlisting}[language=Bash,framexleftmargin=5mm,frame=single,xleftmargin=18pt]
+$ ls  file_list.txt
+\end{lstlisting}
+
+\subsection{Standard Input Redirection}
+Many commands accept input from something called standard input. Standard input 
+can receive input from the Keyboard (via user in terminal) or from files (such as 
+file\_list.txt) through redirection.\\
+We can redirect standard intput from a file by using the '<' character:
+\begin{lstlisting}[language=Bash,framexleftmargin=5mm,frame=single,xleftmargin=18pt]
+$ sort < file_list.txt
+\end{lstlisting}
+In this example the \textbf{sort} command is used to process the contents of 
+the file. The 'sort' commands description is as follows: Write sorted concatenation of all FILE(s) to standard output.\\
+The output of this command will be sent to the standard output and displayed on
+the terminal screen for the user to see. If you wish to send the sorted list to
+another file it can be done like this:
+
+\begin{lstlisting}[language=Bash,framexleftmargin=5mm,frame=single,xleftmargin=18pt]
+$ sort < file_list.txt > sorted_file_list.txt
+\end{lstlisting}
+
+\subsection{Pipelines}
+Pipelines make it possible to feed the output of one command into the input of
+another. Indeed creating some powerful capabilities. Example:
+
+\begin{lstlisting}[language=Bash,framexleftmargin=5mm,frame=single,xleftmargin=18pt]
+$ ls -l | less
+\end{lstlisting}
+This exampke shows how the ls command can be fed into the 'less' command. Essentially
+creating a scrolling output.\\
+\textbf{Some other examples to try}
+\begin{enumerate}
+	\item ls -lt | head: Displays the 10 newest files in the current directory.
+	\item du | sort -nr : Displays a list of directories and how much space they consume
+		, sorted from the largest to smallest.
+	\item find . -type f -print | wc -l : Displays the total number of files in the current
+		working directory and all of it's subdirectories.
+\end{enumerate}
+
+\subsection{Filters}
+Filters are frequently used with pipes to take input from one command and then 
+output the result in standard output. This has a wide range of capabilities that
+allow the user to process or search for specific information.\\
+Some common filters include:
+\begin{enumerate}
+	\item sort : sorts standard input
+	\item uniq : removes duplicate lines of data
+	\item grep : outputs ever line that contains a specified pattern of characters
+	\item fmt : outputs formatted text
+	\item pr : splits data into pages with page breaks, headers and footers (in prepartion for printing)
+	\item head : outputs first few lines of input
+	\item tail : outputs last few lines of input
+	\item tr : Translates characters (upper/lower case conversion, change line termination characters)
+	\item sed : Stream editor, more advanced text translations that 'tr'
+	\item awk : An entire programming language designed for constructing filters.
+\end{enumerate}
+
+\textbf{Note:} Chapter 6 of The Linux Command Line covers this in more detail. I have the book in the extra resources directory.\\
+Alse consider reading more on \href{http://linuxcommand.org/lc3_adv_awk.php}{AWK}
+
+\section{Special Characters}
+In bash there is a concept of special characters, these are characters that 
+carry out special instructions or have an alternate meaning. They are also 
+known as \textit{meta characters} \\
+Some common examples of special characters:
+\begin{center}
+\includegraphics[width=1\textwidth]{special-characters}
+\end{center}
+
+\begin{lstlisting}[language=Bash,framexleftmargin=5mm,frame=single,xleftmargin=18pt]
+$ echo "I am $LOGNAME"
+I am lhunath
+$ echo 'I am $LOGNAME'
+I am $LOGNAME
+$ # boo
+$ echo An open\ \ \ space
+An open   space
+$ echo "My computer is $(hostname)"
+My computer is Lyndir
+$ echo boo > file
+$ echo $(( 5 + 5 ))
+10
+$ (( 5 > 0 )) && echo "Five is greater than zero."
+Five is greater than zero.
+\end{lstlisting}
+
+
 
 
 

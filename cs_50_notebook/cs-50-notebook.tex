@@ -63,8 +63,56 @@ My notes during the CS50 Harvard online course.
 	\item Arguments are inputs to functions.
 	\item Functions take arguments and result in output
 	\item Types of outputs are: side effects (visual, audio output), return values (that can be used).
+	\item Look at the mario program. \\
+		Notice that a do while is used at the top. This checks whether the user has co-operated by inputting a number bigger than 0. If the user inputs 0 it will again ask for the width.
+	\item Integers divided by integers truncate to only the decimal on the right of the "." it throws away all decimals
+	\item How ever you can type cast with (type) variable name. (see the calculator program for example)
 	\item 
 \end{enumerate}
+
+\chapter{Arrays}
+
+The compiling process:
+
+\begin{enumerate}
+	\item preprocessing: Scans header files for relative prototypes. (So the compiler knows what printf is)
+	\item compiling: Turn code into assembly language before it is turned into 0's and 1's.
+	\item assembling: Where the assembly language is turned into machine code.
+	\item linking: Combines all the machine code into the final program that can be executed as your program.
+\end{enumerate}
+
+\textbf{Debugging}
+
+buggy.c
+\begin{lstlisting}[language=C,numbers=left,framexleftmargin=5mm,frame=single,xleftmargin=18pt]
+#include <stdio.h>
+
+int main(void)
+{
+	for (int i = 0; i <= 3; i++)
+	{
+		printf("i is %i\n", i);
+		printf("#\n");
+	}
+}
+\end{lstlisting}
+The code above will print a column of 3 \#.\\
+The commented line is an example of printf debugging. (A method of debugging where the programmer uses printf to check the values of variables while the code runs).\\
+In this example our issue was that we expected a column of 3 \# symbols but instead got 4. After using the printf debugging method it was easy to see that the "i" variable 
+was incremented one to may times due to this little code section. \\
+for (int i = 0; \textbf{i <= 3}; i++)
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
