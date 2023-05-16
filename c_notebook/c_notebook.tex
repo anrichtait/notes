@@ -1,0 +1,130 @@
+%%% Basic document setup %%%
+\documentclass[12pt, letterpaper]{report}
+\title{Template}
+\author{Anrich Tait}
+\date{\today}
+
+
+%%% Packages %%%
+\usepackage{graphicx}	%%% Include images
+\graphicspath{{images/}}%%% Where your images are stored (relative to main file)
+\usepackage{xeCJK}		%%% Include japanese/chinese/korean
+\usepackage{amsmath} 	%%% Math related
+\usepackage{xcolor}
+\usepackage{float}
+\usepackage{geometry}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+\usepackage{listings}
+\setCJKmainfont{Source Han Sans JP}
+\setCJKsansfont{Source Han Sans JP}
+\definecolor{titlepagecolor}{cmyk}{1,.60,0,.40}
+\definecolor{namecolor}{cmyk}{1,.50,0,.10}
+\hypersetup{colorlinks=true,linkcolor=black,filecolor=magenta,urlcolor=cyan}
+
+\begin{document}
+
+\begin{titlepage}
+\newgeometry{left=7.5cm} %defines the geometry for the titlepage
+\pagecolor{titlepagecolor}
+\noindent
+\color{white}
+\makebox[0pt][l]{\rule{1.3\textwidth}{1pt}}
+\par
+\noindent
+\textbf{\textsf{コース:}} \textcolor{namecolor}{\textsf{C Programming}}
+\vfill
+\noindent
+{\huge \textsf{C Programming}}
+\vskip\baselineskip
+\noindent
+\textsf{作家: Anrich Tait}
+\end{titlepage}
+\restoregeometry % restores the geometry
+\nopagecolor% Use this to restore the color pages to white
+
+\begin{abstract}
+	Quick explanation of document.
+\end{abstract}
+\tableofcontents
+
+\chapter{Overview of C}
+\section{Objectives:}
+\begin{enumerate}
+	\item Become familiar with general form of a C program and it's basic elements,
+	\item Why you should write comments
+	\item Use of data types and the differences between the various data types.
+	\item How to declare variables
+	\item How to change the values of variables
+	\item Evaluate arithmetic expressions
+	\item Read data values into a program and display them
+	\item Understand strings
+	\item Redirection to use files for input/output
+	\item Understand the differences between runtime errors, syntax errors and logic errors, and how to debug each.
+\end{enumerate}
+\textbf{Unsorted Notes:}
+\begin{enumerate}
+	\item Both \#define and \#include are handled by the pre-processor, this is
+		why we cannot change a variable or value that has been \#define. The 
+		compiler is not capable of going back to change it.
+	\item Your variable names are also known as identifiers.
+\end{enumerate}
+
+\textbf{Steps in the compiling process:}
+
+\begin{enumerate}
+	\item preprocessing: Scans header files for relative prototypes. (So the compiler knows what printf is). Also looks for variables with \#define
+	\item compiling: Turn code into assembly language before it is turned into 0's and 1's.
+	\item assembling: Where the assembly language is turned into machine code.
+	\item linking: Combines all the machine code into the final program that can be executed as your program.
+\end{enumerate}
+
+\textbf{Data Types:}
+\begin{enumerate}
+	\item int : short for integer. An int can be any whole number betweeen 
+		-32767 and 32767.
+	\item double : Basically a real number, which has an integral part and a 
+		fractional part that is seperated by a decimal point. For example: 
+		3.14159; 0.0005; 150.05. Scientific notation can be used for doubles,
+		for example: the real number \[ 1.23 * 10^5 \] is equivalent to 123000.0
+		where the exponent '5' means "move the decimal point 5 places to the right.
+		In Scientific notation this number is written as 1.23E5. Read the letter 
+		\textit{e} or \textit{E} as "times 10 to the power": 1.23e5 means 1.23 times
+		10 to the power of 5. If the exponent has a minus sign the decimal point is
+		moved to the left.
+\end{enumerate}
+Only use double when necessary, using the int data type is faster in most cases. Also
+int computations are always precise whereas double numbers can have rounding 
+errors.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
