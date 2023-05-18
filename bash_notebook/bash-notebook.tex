@@ -669,7 +669,7 @@ Therefore these variables cannot be changed.
 \textbf{/etc/profile}\\
 All settings that should apply to all user enviroment's should be set here. \\
 
-\textbf{.bashrc}
+\textbf{\~/.bashrc}
 Useful file for creating aliases and adding applications to your path, it can 
 also be used to autostart applications on Arch Linux.\\
 Here is an example from my .bashrc file:
@@ -682,11 +682,38 @@ alias nv='nvim'
 alias ls='ls --color=auto'
 \end{lstlisting}
 
+\textbf{Change shell configuration files}
+After making a change to any of the shell configuration files remember to either 
+restart the system or source them.\\
+This is done with the " source file\_name " command.
 
+\section{Aliases}
+Aliases provide a great way to create custom commands and shortcuts.
 
+\subsection{Listing and creating aliases}
+To list all the current aliases use the following command:
+\begin{lstlisting}[language=Bash,framexleftmargin=5mm,frame=single,xleftmargin=18pt]
+alias
+\end{lstlisting}
 
+Syntax for creating an alias:
+\begin{lstlisting}[language=Bash,framexleftmargin=5mm,frame=single,xleftmargin=18pt]
+alias alias='command-to-run'
+\end{lstlisting}
 
+Here are some useful aliases in my config for example:
+\begin{lstlisting}[language=Bash,framexleftmargin=5mm,frame=single,xleftmargin=18pt]
+#list
+alias ls='ls --color=auto'
+alias la='ls -al'
+alias ll='ls -alFh'
 
+## Colorize the grep command output for ease of 
+##use (good for log files)##
+alias grep='grep --color=auto'
+alias egrep='egrep --color=auto'
+alias fgrep='fgrep --color=auto'
+\end{lstlisting}
 
 
 
