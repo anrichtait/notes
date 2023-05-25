@@ -4,13 +4,24 @@
 \author{Anrich Tait}
 \date{\today}
 
-
 %%% Packages %%%
 \usepackage{graphicx}	%%% Include images
 \graphicspath{{images/}}%%% Where your images are stored (relative to main file)
 \usepackage{xeCJK}		%%% Include japanese/chinese/korean
 \usepackage{amsmath} 	%%% Math related
 \usepackage{xcolor}
+\usepackage{tcolorbox}
+\newcommand{\problem}[1]{%
+    \begin{tcolorbox}[colback=white,colframe=black]
+        \textbf{Problem:} #1
+    \end{tcolorbox}
+}
+
+\newcommand{\solution}[1]{%
+    \begin{tcolorbox}[colback=white,colframe=gray]
+        \textbf{Solution:} #1
+    \end{tcolorbox}
+}
 \usepackage{float}
 \usepackage{geometry}
 \usepackage{fancyhdr}
@@ -44,7 +55,16 @@
 \nopagecolor% Use this to restore the color pages to white
 
 \begin{abstract}
-	Quick explanation of document.
+	This notebook is split into a couple of different chapter. At the back I 
+	have chapters specifically related to the ALX software engineering course. 
+	These chapters are split denoted by "0x0\#". The notes in these chapters 
+	tend to address a particular topic or concept in C. \\
+	The rest of the notebook is a collection of my personal studies and 
+	knowledge that I intend to use as a reference.
+
+	I use a lot of my own resources to write my notes, one thing I struggle to 
+	understand about ALX is that they provide really poor quality resources like 
+	youtube videos and blogs (even twitter posts).
 \end{abstract}
 \tableofcontents
 
@@ -173,6 +193,231 @@ int main(){
 \includegraphics[width=1\textwidth]{printf}
 \end{center}
 
+\subsection{scanf()}
+\subsection*{Syntax:}
+\begin{lstlisting}[language=C,framexleftmargin=5mm,frame=single,xleftmargin=18pt,numbers=left,numberstyle=\tiny]
+scanf("%lf", &miles);
+\end{lstlisting}
+
+\subsection*{A brief look at scanf}
+'scanf()' is a function that can be used to  copy data into a variable, the most 
+common use is getting user input. The data it copies is retrieved from the 
+standard input (keyboard). \\\\
+
+Note that any variable that recieves a value from 'scanf' needs to have \textit{adress-of-operator}.
+The address of operator ( \& ) tells the program where the original variable is 
+located in memory. Without the operator the program would not be able to assign 
+a value to the variable.
+
+\subsection*{Return statement}
+The return statement is used to signal that the program has completed. These can 
+be placed inside loops or other functions (than main) to also indicate an error.\\\\
+
+\subsection{Excercise}
+\subsection*{Self-check}
+\begin{enumerate}
+\item Show the output displayed by the following program lines when the data
+	entered are 5 and 7:
+\begin{lstlisting}[language=C,framexleftmargin=5mm,frame=single,xleftmargin=18pt,numbers=left,numberstyle=\tiny]
+printf("Enter two integers> ");
+scanf("%d%d", &m, &n);
+m = m + 5;
+n = 3 * n;
+printf("m = %d\nn = %d\n", m, n);
+\end{lstlisting}
+\item Show the contents of memory before and after the execution of the program
+lines shown in Exercise 1.
+\item Show the output displayed by the following lines if the value of exp is 11:
+\begin{lstlisting}[language=C,framexleftmargin=5mm,frame=single,xleftmargin=18pt,numbers=left,numberstyle=\tiny]
+printf("My name is ");
+printf("Jane Doe.");
+printf("\n");
+printf("I live in ");
+printf("Ann Arbor, MI\n");
+printf("and I have %d years ", exp);
+printf("of programming experience.\n");
+\end{lstlisting}
+\end{enumerate}
+
+\subsection*{Programming}
+\begin{enumerate}
+	\item Write a statement that asks the user to type three integers and another state-
+		ment that stores the three user responses into first, second, and third.
+	\item \textbf{a.} Write a statement that displays the following line with the value of the
+		type int variable n before the period.\\
+		The value of n is \_\_\_\_\_\_\_\_\_\_\_.\\
+		\textbf{b.} Assuming that side and area are type double variables containing the
+		length of one side in cm and the area of a square in square cm, write a
+		statement that will display this information in this form:\\
+		The area of a square whose side length is \_\_\_\_\_\_ cm
+		is \_\_\_\_\_\_ square cm.
+	\item Write a program that asks the user to enter the radius of a circle and then
+		computes and displays the circle’s area. Use the formula:\\
+		Area = PI *  Radius * Radius\\
+		where PI is the constant macro 3.14159.\\
+\end{enumerate}
+
+\subsection*{Answers}
+\begin{enumerate}
+	\item $ m = 5 $ therefore $ m = 5 + 5 $\\
+			and\\
+			$ n = 7 $ therefore $ n = 3 * 7 $\\
+			\textbf{Therefore output = 31}
+		\item Memory before: \\
+				m = m + 5\\
+				n = 3 * n\\\\
+
+				Memory after:\\
+				m = 10
+				n = 21
+			\item Output: "My name is Jane Doe.\\
+							I live in Ann Arbor, MI\\
+							and I have 11 years of programming experience.\\
+\end{enumerate}
+
+\begin{enumerate}
+	\item Code:
+\begin{lstlisting}[language=C,framexleftmargin=5mm,frame=single,xleftmargin=18pt,numbers=left,numberstyle=\tiny]
+printf("Type 3 integers: \n");
+
+scanf("%d %d %d", &x, &y, &z);
+\end{lstlisting}
+\item a. Code
+\begin{lstlisting}[language=C,framexleftmargin=5mm,frame=single,xleftmargin=18pt,numbers=left,numberstyle=\tiny]
+printf("The value of n is %d", n);
+\end{lstlisting}
+b. Code
+\begin{lstlisting}[language=C,framexleftmargin=5mm,frame=single,xleftmargin=18pt,numbers=left,numberstyle=\tiny]
+printf("The area of a square whose side length is %d cm %d square cm.", side, square);
+\end{lstlisting}
+\item Code:
+\begin{lstlisting}[language=C,framexleftmargin=5mm,frame=single,xleftmargin=18pt,numbers=left,numberstyle=\tiny]
+float radius;
+float area = 3.14159 * radius * radius;
+
+printf("Enter the radius of a circle: \n");
+
+scanf("%f", &radius);
+
+printf("The area of the circle is: %f\n", area);
+\end{lstlisting}
+\end{enumerate}
+
+\subsection{Type casting}
+Type casting is a method in C where the programmer converts data to a certain 
+type before the data is processed. This is useful to avoid integer division and 
+also to ensure that the output is as acurrate as possible.
+
+\subsection*{Syntax}
+\begin{lstlisting}[language=Bash,framexleftmargin=5mm,frame=single,xleftmargin=18pt,numbers=left,numberstyle=\tiny]
+int students, totalScore, average;
+
+average = (double)total_score / (double)num_students;
+\end{lstlisting}
+
+\begin{tcolorbox}[colback=white,colframe=black]
+    \textbf{Question:} In C why would i use type casting instead of declaring a variable as the
+	end type from the start?
+\end{tcolorbox}
+
+\begin{tcolorbox}[colback=white,colframe=gray]
+    \textbf{Reply:} In C, type casting is used to explicitly convert a value 
+	from one data type to another. There are situations where you may need to 
+	use type casting instead of declaring a variable with the end type from 
+	the start. Here are a few scenarios where type casting can be useful:
+	\begin{enumerate}
+		\item Compatibility with existing code: If you have an existing 
+			codebase where a variable is declared with a certain data type, 
+			and you need to use that variable in a context where a different 
+			data type is required, you can use type casting to convert the 
+			variable to the desired type. This allows you to reuse the 
+			existing variable without needing to declare a new one.
+
+		\item Arithmetic operations: When performing arithmetic operations, C 
+			has specific rules for implicit type conversions. For example, if 
+			you have an expression involving different data types, the compiler 
+			will automatically promote them to a common type before performing 
+			the operation. However, there might be cases where you want to 
+			explicitly convert a value to a specific type to control the 
+			behavior of the arithmetic operation. Type casting allows you to 
+			achieve this control.
+
+		\item Function arguments: Sometimes, you may need to pass arguments of 
+			one data type to a function that expects a different data type. In 
+			such cases, you can use type casting to convert the argument to 
+			the expected type before passing it to the function.
+
+		\item Pointer arithmetic: Pointers in C can be manipulated using 
+			arithmetic operations. When performing pointer arithmetic, it is 
+			essential to ensure that the arithmetic is done based on the 
+			correct data type. Type casting allows you to explicitly specify 
+			the data type for pointer arithmetic, ensuring proper memory access.
+
+		\item Overcoming limitations: C has specific limitations when it comes 
+			to data types, such as the maximum value a variable can hold. If 
+			you need to store a larger value than what the data type allows, 
+			you can use type casting to a larger type that can accommodate the 
+			value.
+	\end{enumerate}
+It's worth noting that while type casting can be useful in certain situations, 
+it should be used with caution. Incorrect or unnecessary type casting can lead 
+to unexpected results, loss of precision, or even undefined behavior. It's 
+important to understand the implications and ensure the correctness of your 
+code when using type casting.
+\end{tcolorbox}
+
+\subsection{Rules for evaluating expressions}
+Like normal math C follows a predefined process and rules when evaluating expressions.
+\begin{enumerate}
+	\item Parentheses: All expressions in Parentheses are evaluated seperatley. 
+		Nested expressions (in paretheses) are evaluated from the inside out.
+	\item Operator precedence: Operators in the same expressions are evaluated 
+		in the following order:\\
+		unary: +, -\\
+		*, /, \%\\
+		binary +, -
+	\item Associativty: Unary operators in the same expression are evaluated 
+		from right to left.\\
+		Binary operators are evaluated from left to right.
+\end{enumerate}
+
+\problem{It is easy to write confusing code when it comes to operators and their 
+	order. It can however be simplified by using Parentheses. \\
+	Make the following expression easier to read with the use of parentheses:\\
+\begin{center} $ x * y * z + a / b - c * d $ \end{center} }
+
+\solution{ \begin{center} $ (x * y * z + ( a / b ) - (c * d) $ \end{center} }
+
+\subsection{Writing formulas in C}
+
+\begin{center}
+	\begin{tabular}[c]{l|l}
+		\hline
+		\multicolumn{1}{c|}{\textbf{Formula}} & 
+		\multicolumn{1}{c}{\textbf{C expression}} \\
+		\hline
+		$ b^2 - 4ac $ & (b * b) - 4 * a * c \\
+		\hline
+		$ a + b -c $ & $ a + b -c $  \\
+		\hline
+		$ \frac{a+b}{c+d} $ & $ (a + b) / (c + d) $ \\
+		\hline
+		$ \frac{1}{1+x^2} $ & 1 / (1 + x * x) \\
+		\hline
+		$ a x -(b+c) $ & $ a * -(b + c) $\\
+		\hline
+	\end{tabular}
+\end{center}
+Be aware that arithmetic with very large and very small numbers is not always 
+accurate. This is known as arithmetic underflow and overflow.
+
+\section(Interactive mode, batch mode, and data files)
+\textbf{Interactive mode} refers to programs where the user interacts with the 
+program while it is running. i.e typing in values that are requested.\\
+\textbf(Batch mode} refers to programs that scan data from from a file prepared 
+beforehand instead of the user inputting the values.
+
+\subsection*{Input redirection}
 
 
 
@@ -203,7 +448,9 @@ int main(){
 
 
 
-\chapter{C}
+
+
+\chapter{CS\_50}
 \textbf{Things to focus on when writing code:}
 \begin{enumerate}
 	\item Correctness
@@ -225,7 +472,7 @@ int main(){
 	\item 
 \end{enumerate}
 
-\chapter{Arrays}
+\section{Arrays}
 
 The compiling process:
 
@@ -256,6 +503,142 @@ The commented line is an example of printf debugging. (A method of debugging whe
 In this example our issue was that we expected a column of 3 \# symbols but instead got 4. After using the printf debugging method it was easy to see that the "i" variable 
 was incremented one to may times due to this little code section. \\
 for (int i = 0; \textbf{i <= 3}; i++)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\chapter{0x00 C - Hello, World}
+\section{Objective}
+Explore the basics of C, including the history behind it. Topics include:
+\begin{enumerate}
+	\item Compiling
+	\item Betty linter
+	\item Basic programs
+	\item History of C (creators/contributors)
+\end{enumerate}
+
+\section{Resources}
+\begin{enumerate}
+		\item \href{https://s3.amazonaws.com/alx-intranet.hbtn.io/uploads/misc/2022/4/e0ccf91eec6b977a9e00ed384dc285df9c2772e3.pdf?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIARDDGGGOUSBVO6H7D%2F20230518%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20230518T041526Z&X-Amz-Expires=86400&X-Amz-SignedHeaders=host&X-Amz-Signature=7eb42690c07f5fd2a2f47498b2ff13ab2a10e884d1d6da328344d0a27c120201}{Starting C Slide}
+		\item \href{https://github.com/holbertonschool/Betty/wiki}{Betty coding style}
+		\item \href{https://www3.ntu.edu.sg/home/ehchua/programming/cpp/gcc_make.html}{GCC and Make - Nanyang Uni}
+\end{enumerate}
+
+\subsection{man and help pages}
+\begin{enumerate}
+	\item gcc
+	\item printf (3)
+	\item puts
+	\item putchar
+\end{enumerate}
+
+\section{Notes}
+I covered the compilation process briefly in my CS\_50 notes, here it is again:
+\begin{enumerate}
+	\item preprocessing: Scans header files for relative prototypes. (So the 
+		compiler knows what printf is)
+	\item compiling: Turn code into assembly language before it is turned into 
+		0's and 1's.
+	\item assembling: Where the assembly language is turned into machine code.
+	\item linking: Combines all the machine code into the final program that 
+		can be executed as your program.
+\end{enumerate}
+
+\begin{center}
+	\includegraphics[width=1\textwidth]{compiler}
+\end{center}
+
+
+\chapter{0x01 C - Variables, if, else, while}
+\section{Objectives}
+Understanding and using:
+\begin{enumerate}
+	\item Arithmetic operators
+	\item Logical operators
+	\item Relational operators
+	\item Conditional statements
+	\item Declaring variables
+	\item Assign values to variables
+	\item While loops
+	\item Gcc flags: -m32 and -m64
+\end{enumerate}
+
+\chapter{Resources}
+\begin{enumerate}
+	\item \href{https://s3.amazonaws.com/alx-intranet.hbtn.io/uploads/misc/2022/4/e0ccf91eec6b977a9e00ed384dc285df9c2772e3.pdf?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIARDDGGGOUSBVO6H7D%2F20230519%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20230519T061618Z&X-Amz-Expires=86400&X-Amz-SignedHeaders=host&X-Amz-Signature=014bb1a91a87b5e166ddab77046fced5092d55a626bd204e5c8c573761b37fda}{C basics slides}
+	\item \href{https://publications.gbdirect.co.uk//c_book/chapter2/keywords_and_identifiers.html}{Keywords and identifiers}
+	\item \href{https://publications.gbdirect.co.uk//c_book/chapter2/integral_types.html}{Integers}
+	\item \href{https://www.tutorialspoint.com/cprogramming/c_arithmetic_operators.htm}{Arithmetic operators}
+	\item \href{https://www.cprogramming.com/tutorial/c/lesson2.html}{If statements}
+	\item \href{https://www.tutorialspoint.com/cprogramming/if_else_statement_in_c.htm}{If else statements}
+	\item \href{https://www.tutorialspoint.com/cprogramming/c_relational_operators.htm}{Relational operators}
+	\item \href{https://www.fresh2refresh.com/c-programming/c-operators-expressions/c-logical-operators/}{Logical operators}
+	\item \href{https://www.tutorialspoint.com/cprogramming/c_while_loop.htm}{While loops}
+	\item \href{https://www.youtube.com/watch?v=Ju1LYO9pkaI}{While loop video}
+\end{enumerate}
+
+\section{man or help pages}
+\begin{enumerate}
+	\item ascii
+\end{enumerate}
+
+\section{Notes}
+\subsection{Keywords and identifiers}
+C reserves the right to use certain keywords, this means that functions and 
+variables cannot use these for their names.\\
+Examples include:
+\begin{enumerate}
+	\item auto 
+	\item void
+	\item while
+	\item double
+\end{enumerate}
+
+\textbf{Identifiers}
+Identifiers are the names that the programmer gives to things.\\
+Identifiers apply to variables, functions, structs, labels, unions, and enums.\\\\
+
+Refer to normal naming conventions for how identifiers should be named.
+
+\subsection{Integers}
+This is a quick reference for how to the integral types:
+\begin{enumerate}
+	\item \%c : char
+	\item \%d : decimal (signed int, short, unsigned char)
+	\item \%u : decimal (unsigned int, unsigned short, unsigned char)
+	\item \%x : hexadecimal (int, short, char)
+	\item \%o : octal (int, short, char)
+	\item \%ld: (signed long)
+	\item \%lu \%lx \%lo : as above but for longs
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
 
 
 \chapter{Functions}
@@ -573,6 +956,24 @@ In this example, we use the malloc() function to dynamically allocate an array
 of 10 integers, and store its memory address in the pointer variable arr. We 
 then use a loop to assign the values 0 to 9 to the array elements. Finally, we
 use the free() function to release the allocated memory.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
