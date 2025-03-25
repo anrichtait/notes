@@ -1,0 +1,35 @@
+#+title: CompTIA SY0-701 Security+ Notes
+#+author: Anrich Tait
+
+
+
+* 1.1
+** Security Controls
+*** Control categories
+- Technical Controls: implemented using systems, operating system controls, firewalls
+- Managerial controls: administrative controls associated with securty design and implementation, security policies.
+- Operational controls: implemented by people instead of people
+- Physical controls: limits physical access, gaude shack, fences, keycard locks.
+
+* 1.2
+** The Cia Triad
+** Non-repudiation
+** Authentication, Authorization and Accounting
+** Gap Analysis
+** Zero Trust
+** Physical Security
+** Deception and Disruption
+* 1.3
+** Technical Change Management
+
+
+
+* Links
+** Practice exams
+- https://www.examprepper.co/
+- https://certpreps.com/secplus/
+- https://examgecko.com/sy0-701-comptia-security
+- https://www.examcompass.com/
+- https://www.certnova.com/
+** Videos
+- https://www.youtube.com/playlist?list=PLG49S3nxzAnl4QDVqK-hOnoqcSKEIDDuv -> prof playlist
