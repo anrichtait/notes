@@ -11,10 +11,10 @@ main.pdf
 *.synctex.gz
 *.toc
 !*.tex
-!*.pdf
+*.pdf
 *.c
 *.jpg
 C-Notebook-old
 *.out
 *.xdv
-
+*.epub
