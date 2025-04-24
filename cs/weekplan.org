@@ -1,0 +1,217 @@
+#+title: Weekplan
+
+* Section 1: General Security Concepts
+** REVIEWED Security Controls (11:48)
+CLOSED: [2025-04-08 Tue 13:58]
+
+* 1.2 – Security Concepts
+** REVIEW The CIA Triad (5:17)
+** REVIEW Non-repudiation (7:57)
+** REVIEW Authentication, Authorization, and Accounting (9:03)
+** REVIEW Gap Analysis (6:44)
+** REVIEW Zero Trust (10:04)
+** REVIEW Physical Security (8:17)
+** REVIEW Deception and Disruption (4:30)
+** REVIEW Change Management (11:22)
+** REVIEW Technical Change Management (10:54)
+** REVIEW Public Key Infrastructure (9:08)
+** REVIEW Encrypting Data (9:48)
+** REVIEW Key Exchange (3:39)
+** REVIEW Encryption Technologies (6:53)
+** REVIEW Obfuscation (8:00)
+** REVIEW Hashing and Digital Signatures (10:24)
+** REVIEW Blockchain Technology (2:22)
+** REVIEW Certificates (14:38)
+
+* Section 2: Threats, Vulnerabilities, and Mitigations
+** REVIEW Threat Actors (10:23)
+** REVIEW Common Threat Vectors (17:14)
+** STUDY Phishing (6:32) 
+** STUDY Impersonation (5:52)
+** STUDY Watering Hole Attacks (4:12)
+** STUDY Other Social Engineering Attacks (3:29)
+** STUDY Memory Injections (2:39)
+** STUDY Buffer Overflows (3:37)
+** STUDY Race Conditions (4:58)
+** STUDY Malicious Updates (5:45)
+** STUDY Operating System Vulnerabilities (4:09)
+** STUDY SQL Injection (5:09)
+** STUDY Cross-site Scripting (8:34)
+** STUDY Hardware Vulnerabilities (6:27)
+** STUDY Virtualization Vulnerabilities (5:29)
+** STUDY Cloud-specific Vulnerabilities (4:06)
+** STUDY Supply Chain Vulnerabilities (9:12)
+** STUDY Misconfiguration Vulnerabilities (7:09)
+** STUDY Mobile Device Vulnerabilities (3:23)
+** STUDY Zero-day Vulnerabilities (3:02)
+** STUDY An Overview of Malware (6:06)
+** STUDY Viruses and Worms (5:54)
+** STUDY Spyware and Bloatware (4:21)
+** STUDY Other Malware Types (7:32)
+** STUDY Physical Attacks (4:04)
+** STUDY Denial of Service (6:07)
+** STUDY DNS Attacks (8:57)
+** STUDY Wireless Attacks (7:55)
+** STUDY On-path Attacks (5:30)
+** STUDY Replay Attacks (5:45)
+** STUDY Malicious Code (3:40)
+** STUDY Application Attacks (11:48)
+** STUDY Cryptographic Attacks (9:31)
+** STUDY Password Attacks (7:15)
+** STUDY Indicators of Compromise (10:59)
+** STUDY Segmentation and Access Control (6:06)
+** STUDY Mitigation Techniques (6:51)
+** STUDY Hardening Techniques (12:11)
+
+* Section 3: Security Architecture
+** STUDY Cloud Infrastructures (9:56)
+** STUDY Network Infrastructure Concepts (6:56)
+** STUDY Other Infrastructure Concepts (14:24)
+** STUDY Infrastructure Considerations (13:48)
+** STUDY Secure Infrastructures (5:54)
+** STUDY Intrusion Prevention (5:14)
+** STUDY Network Appliances (11:56)
+** STUDY Port Security (3:50)
+** STUDY Firewall Types (8:00)
+** STUDY Secure Communication (9:55)
+** STUDY Data Types and Classifications (5:54)
+** STUDY States of Data (6:07)
+** STUDY Protecting Data (14:28)
+** STUDY Resiliency (9:42)
+** STUDY Capacity Planning (3:53)
+** STUDY Recovery Testing (5:18)
+** STUDY Backups (12:16)
+** STUDY Power Resiliency (4:02)
+
+* Section 4: Security Operations
+** STUDY Secure Baselines (4:11)
+** STUDY Hardening Targets (10:11)
+** STUDY Securing Wireless and Mobile (8:58)
+** STUDY Wireless Security Settings (10:54)
+** STUDY Application Security (8:26)
+** STUDY Asset Management (8:37)
+** STUDY Vulnerability Scanning (7:45)
+** STUDY Threat Intelligence (4:46)
+** STUDY Penetration Testing (6:21)
+** STUDY Analyzing Vulnerabilities (10:29)
+** STUDY Vulnerability Remediation (8:45)
+
+* 4.4 – Security Monitoring
+** STUDY Security Monitoring (10:27)
+** STUDY Security Tools (14:06)
+
+* 4.5 – Enterprise Security
+** STUDY Firewalls (11:31)
+** STUDY Web Filtering (10:00)
+** STUDY Operating System Security (3:22)
+** STUDY Secure Protocols (4:47)
+** STUDY Email Security (7:05)
+** STUDY Monitoring Data (7:25)
+** STUDY Endpoint Security (9:25)
+
+* 4.6 – Identity and Access Management
+Identity and Access Management (12:46)
+Access Controls (7:49)
+Multifactor Authentication (4:29)
+Password Security (6:22)
+
+* 4.7 – Automation and Orchestration
+Scripting and Automation (8:20)
+
+* 4.8 – Incident Response
+Incident Response (9:14)
+Incident Planning (6:50)
+Digital Forensics (9:54)
+
+4.9 – Security Data Sources
+Log Data (13:41)
+
+Section 5: Security Program Management and Oversight
+5.1 – Security Governance
+Security Policies (11:02)
+Security Standards (5:36)
+Security Procedures (7:02)
+Security Considerations (4:51)
+Data Roles and Responsibilities (2:27)
+
+5.2 – Risk Management
+Risk Management (3:30)
+
+Risk Analysis (9:13)
+
+To manage risk, we have to understand the risk we carry. In this video, you’ll learn about risk assessments, risk appetite, risk tolerance, and risk registers.
+Risk Management Strategies video title page
+Risk Management Strategies (3:12)
+
+We have many options with managing risk. In this video, you’ll learn about transferring risk, accepting risk, avoiding risk, and more.
+Business Impact Analysis video title page
+Business Impact Analysis (2:55)
+
+A security event can have a significant impact to the organization. In this video, you’ll learn how to determine a recovery time objective, recovery point objective, mean time to repair, and mean time between failures.
+5.3 – Third-party Risk
+Third-party Risk Assessment video title page
+Third-party Risk Assessment (11:36)
+
+It’s often necessary to work with third-parties to mitigate risk. In this video, you’ll learn about right-to-audit clauses, supply chain analysis, vendor monitoring, and more.
+Agreement Types video title page
+Agreement Types (5:19)
+
+Contracts and agreements are an important part of risk management. In this video, you’ll learn about service level agreements, memorandums of understanding, non-disclosure agreements, and more.
+5.4 – Security Compliance
+Compliance video title page
+Compliance (8:06)
+
+Many organizations must meet a specific standard of laws, policies, and regulations. In this video, you’ll learn about regulatory compliance, reputational damage, compliance monitoring, and more.
+Privacy video title page
+Privacy (5:21)
+
+There are many laws and guidelines associated with the data collected by an organization. In this video, you’ll learn about legal implications associated with privacy, data responsibilities, and data inventory and retention.
+5.5 – Audits and Assessments
+Audits and Assessments video title page
+Audits and Assessments (2:49)
+
+There are many good reasons to perform ongoing technology audits. In this video, you’ll learn about internal audits, external audits, and more.
+Penetration Tests video title page
+Penetration Tests (5:29)
+
+Many audits use penetration tests to gather information about a company’s security posture. In this video, you’ll learn about pentesting perspectives, reconnaissance techniques, and more.
+5.6 – Security Awareness
+Security Awareness video title page
+Security Awareness (6:45)
+
+It’s important to involve everyone in the organization when discussing security awareness. In this video, you’ll learn about phishing campaigns, anomalous behavior recognition, reporting options, and more.
+User Training video title page
+User Training (4:31)
+
+User training can involve employees, management, third-parties, and other business parties. In this video, you’ll learn about training methods, security education, and more.
+
+Click here to subscribe to the Professor Messer YouTube channel!
+Join the Professor Messer Discord
+Categories
+Categories
+
+    220-1101 A+
+    220-1102 A+
+    220-1201 A+
+    N10-009 Network+
+    SY0-701 Security+
+    Events
+    Members
+    Vouchers
+
+Recent Posts
+
+    Network Tools – CompTIA A+ 220-1201 – 2.8
+    Network Types – CompTIA A+ 220-1201 – 2.7
+    Internet Connection Types – CompTIA A+ 220-1201 – 2.7
+    Today’s 220-1102 CompTIA A+ Pop Quiz: Looks official to me
+    Assigning IP Addresses – CompTIA A+ 220-1201 – 2.6
+
+Site Information
+Contact Us
+About Messer Studios
+Privacy Policy
+Terms of Service
+
+Copyright © 2025 Messer Studios LLC. All rights reserved.
+"Professor Messer" and the Professor Messer logo are registered trademarks of Messer Studios, LLC.

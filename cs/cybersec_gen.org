@@ -1,0 +1,17 @@
+#+title: Cyber Security General Notes
+#+author: Anrich Tait
+
+* Practice and Learning Resources
+- Try some puzzles out here: https://www.hackthissite.org/
+- Learn some cryptography here: https://cryptohack.org/
+- Practice network stuff here!: https://overthewire.org/wargames/
+- Learn about Reverse Engineering here: https://malwareunicorn.org/#/workshops
+- Basics of XSS exploitation can be found here. https://owasp.org/www-community/attacks/xss/
+  - Check out the testing methods, also the website has tons of web vulns.
+- Learn about Cyber Security and everything involved here: https://roadmap.sh/cyber-security
+- Or learn a bunch of stuff here: https://www.hackthebox.com/
+- You can get certs here: https://academy.hackthebox.com/
+- You can learn more stuff here: https://tryhackme.com/
+- Or even more stuff here: https://ctfguide.com/
+- And finally do bounties here: https://www.hackerone.com/ - https://www.bugcrowd.com/
+- Learn about security topics ThreatLocker here: https://www.threatlocker.com/resources/blogs

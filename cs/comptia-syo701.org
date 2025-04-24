@@ -1,30 +1,897 @@
 #+title: CompTIA SY0-701 Security+ Notes
 #+author: Anrich Tait
 
-
-
-* 1.1
+* Section 1: General Security Concepts
 ** Security Controls
-*** Control categories
-- Technical Controls: implemented using systems, operating system controls, firewalls
-- Managerial controls: administrative controls associated with securty design and implementation, security policies.
-- Operational controls: implemented by people instead of people
-- Physical controls: limits physical access, gaude shack, fences, keycard locks.
+*** Technical Controls
+- Automated mechanisms implemented via technology (e.g., firewalls, antivirus, intrusion detection systems, OS hardening) that protect systems and networks.
+*** Managerial Controls
+- Administrative actions such as developing/enforcing security policies, risk management, and security training programs.
+*** Operational Controls
+- Day-to-day procedures and practices (e.g., security awareness, incident response, routine monitoring) performed by people.
+*** Physical Controls
+- Measures that restrict physical access (e.g., locks, keycard access, surveillance systems, fences).
 
-* 1.2
-** The Cia Triad
-** Non-repudiation
-** Authentication, Authorization and Accounting
-** Gap Analysis
-** Zero Trust
-** Physical Security
-** Deception and Disruption
-* 1.3
-** Technical Change Management
+** Key Security Concepts
+*** The CIA Triad
+- *Confidentiality*: Ensuring that data is accessible only to authorized users.
+  Examples: Multi-factor authentication (MFA), encryption, access controls, and secure communication protocols.
+- *Integrity*: Maintaining the accuracy and consistency of data.
+  Techniques: Digital signatures, hashing (e.g., SHA-256), checksums, and certificates.
+- *Availability*: Ensuring that data and systems are accessible when needed.
+  Methods: Fault tolerance, redundancy, regular patching/updating, load balancing, and disaster recovery planning.
+
+*** Non-Repudiation
+- Guarantees that an action cannot be denied after the fact.
+- *Proof of Integrity*: Using hashing to verify that a file or data has not been altered.
+- *Proof of Origin*: Employing digital signatures—data is signed with a private key and verified with a corresponding public key—to confirm the source.
+
+*** Authentication, Authorization, and Accounting (AAA)
+- AAA servers store user details and authenticate login requests.
+- *Authentication*: Verifying the identity of a user or device.
+  Methods: Digitally signed certificates, usernames/passwords, and multi-factor authentication.
+  Note: A Certificate Authority (CA) is often used to manage and issue certificates.
+- *Authorization*: Granting access rights and permissions based on the verified identity.
+- *Accounting*: Tracking and recording user activities for auditing and forensic purposes.
+  Protocols: Commonly implemented using RADIUS or TACACS+.
+
+*** Gap Analysis
+- Involves comparing current security measures against established standards or desired benchmarks to identify deficiencies.
+- Key Steps:
+  - Establish a baseline using standards (e.g., NIST Special Publication 800-171 or ISO/IEC guidelines).
+  - Review current systems and processes to pinpoint weaknesses.
+  - Create an analysis report detailing baseline objectives and a clear view of the current state, which aids in planning improvements.
+
+*** Zero Trust
+- A security model based on the principle of "never trust, always verify."
+  No user or device is trusted by default, regardless of its location.
+- *Core Principles*:
+  - **Continuous Verification**: Authentication is required every time data is accessed.
+  - **Network Segmentation**: Dividing the network into functional planes to limit lateral movement:
+    - *Data Plane*: Processes frames, packets, and network data.
+    - *Control Plane*: Manages network functions such as routing, firewall rules, and NAT tables.
+- *Example – Switch Architecture*:
+  - Data Plane: Handles physical connection ports.
+  - Control Plane: Manages the configuration settings of the switch.
+- *Controlling Trust*:
+  - **Adaptive Identity**: Adjusts authentication requirements based on the connection’s context (e.g., source, destination, and sensitivity of requested resources).
+  - **Threat Scope Reduction**: Minimizes the number of network entry points.
+  - **Policy-Driven Access Control**: Integrates adaptive identity verification with granular network settings.
+- *Security Zones*: Segregating the network into zones for fine-grained control, such as restricting access from untrusted segments to trusted areas.
+- *Key Components*:
+  - **Policy Enforcement Point (PEP)**: All access requests pass through this point, which collects and forwards necessary data.
+  - **Policy Decision Point (PDP)**: Receives data from the PEP to determine whether access should be granted.
+  - **Policy Engine**: Evaluates each request based on established policies and contextual information.
+  - **Policy Administrator**: Communicates with the PEP, providing access tokens or credentials based on the Policy Engine’s evaluation.
+- *Zero Trust Network Process*:
+  1. Subjects (devices and systems) send data requests to the Policy Enforcement Point (PEP).
+  2. The PEP gathers information about the request and forwards it to the Policy Decision Point (PDP).
+  3. The PDP passes the information to the Policy Engine, which evaluates the validity of the request.
+  4. The Policy Engine sends the evaluation results to the Policy Administrator, which then provides the necessary certificates or access tokens back to the PEP.
+
+*** Physical Security
+- *Purpose*: Protect physical assets, personnel, and data centers from unauthorized access, environmental hazards, and other physical threats.
+- *Access Controls*:
+  - Locks, security badges, keycard systems, and biometrics to restrict entry.
+  - Visitor logs and badge policies to monitor and control access.
+- *Barriers & Perimeter Security*:
+  - Fences, walls, gates, bollards, and secure doors to deter and delay intruders.
+  - Security lighting and controlled entry points to enhance surveillance.
+- *Surveillance & Monitoring*:
+  - Closed-circuit television (CCTV), motion detectors, and alarm systems to monitor activity.
+  - Security patrols and on-site personnel for real-time response.
+- *Environmental Controls*:
+  - Fire suppression systems (e.g., sprinklers, gas-based suppression) and smoke detectors.
+  - Climate controls (HVAC systems), flood sensors, and backup power supplies (UPS, generators) to protect equipment.
+- *Additional Considerations*:
+  - Regular audits and maintenance of physical security measures.
+  - Integration with overall security policy and incident response plans.
+
+*** Deception and Disruption
+- *Purpose*: Mislead attackers and delay or disrupt their actions, thereby reducing the potential impact of an attack.
+- *Key Techniques*:
+  - *Honeypots*: Decoy systems that appear vulnerable and attract attackers, allowing monitoring of attack methods and gathering intelligence.
+  - *Decoy Systems*: Fake assets (e.g., servers, databases) deployed to divert attackers from valuable resources.
+  - *Honeytokens*: Embedded digital tokens or fake data (e.g., bogus credentials) that trigger alerts when accessed.
+  - *Tar Pits*: Systems designed to intentionally slow down or trap attackers by delaying their interactions.
+- *Benefits*:
+  - **Early Detection**: Identify malicious activity before it reaches critical systems.
+  - **Intelligence Gathering**: Study attacker behavior and techniques in a controlled environment.
+  - **Disruption**: Waste attackers’ time and resources, reducing the likelihood of a successful breach.
+- *Implementation Considerations*:
+  - Ensure decoy systems are isolated from production networks to prevent accidental data exposure.
+  - Regularly update and monitor deceptive elements to adapt to evolving attack techniques.
+  - Integrate deception tactics within the broader incident response and threat intelligence framework.
+
+*** Change Management
+- *Definition*: A formal process for managing changes to IT systems, processes, and organizational procedures in a controlled and systematic manner.
+- *Purpose*:
+  - Minimize disruptions to services and operations.
+  - Reduce risks associated with unauthorized or poorly implemented changes.
+  - Ensure that all changes are documented, tested, approved, and reviewed.
+- *Core Steps*:
+  1. **Request for Change (RFC)**: Initiate a formal change request detailing the proposed modification.
+  2. **Impact Analysis & Risk Assessment**: Evaluate potential effects on existing systems and identify risks.
+  3. **Approval Process**: Review by a Change Advisory Board (CAB) or designated authority.
+  4. **Planning & Scheduling**: Develop an implementation plan, including rollback procedures in case of issues.
+  5. **Implementation**: Execute the change in a controlled environment, typically during scheduled maintenance windows.
+  6. **Testing & Validation**: Verify that the change works as intended without adversely affecting other systems.
+  7. **Post-Implementation Review**: Assess the success of the change and update documentation accordingly.
+- *Key Considerations*:
+  - Ensure proper communication across stakeholders.
+  - Maintain detailed records for auditing and compliance purposes.
+  - Integrate with incident and problem management processes.
+
+*** Technical Change Management
+- *Definition*: A subset of change management that focuses specifically on technical modifications in IT environments.
+- *Focus Areas*:
+  - Hardware and software updates.
+  - Network configuration changes.
+  - System upgrades and patches.
+  - Infrastructure modifications and deployments.
+- *Key Steps & Considerations*:
+  - **Detailed Technical Assessment**: Analyze the technical aspects and dependencies before proceeding.
+  - **Testing Environment**: Use staging or testing environments to validate changes before production deployment.
+  - **Rollback and Recovery Plans**: Develop clear strategies to revert changes in case of failure.
+  - **Documentation and Version Control**: Maintain precise records of technical configurations and updates.
+  - **Automation Tools**: Leverage tools (e.g., configuration management systems like Ansible, Puppet, or Chef) to standardize and streamline technical changes.
+  - **Integration with Broader IT Policies**: Align technical changes with overall IT governance and security policies.
+- *Benefits*:
+  - Reduces downtime and performance issues.
+  - Enhances system stability and reliability.
+  - Supports regulatory and compliance requirements.
+
+** Cryptographic Solutions
+** Public Key Infrastructure (PKI)
+- A framework for managing digital certificates and public–private key pairs.
+- Core components include:
+  - **Certificate Authority (CA)**: Issues, signs, and verifies digital certificates.
+  - **Registration Authority (RA)**: Assists in validating certificate requests before they reach the CA.
+  - **Certificate Repositories**: Securely stores and distributes certificates (often following the X.509 standard).
+- Purpose: Binds public keys to identities and manages the full certificate lifecycle (issuance, renewal, revocation via CRL or OCSP).
+- Note: PKI is fundamental to establishing secure communications (e.g., in TLS/SSL).
+
+** Symmetric Encryption
+- Encrypts and decrypts data using the same secret key.
+- Common algorithms include AES (Advanced Encryption Standard), DES (Data Encryption Standard, now largely deprecated), and Triple DES.
+- Applications: Often used for bulk data encryption due to high performance.
+
+** Asymmetric Encryption
+- Utilizes two mathematically related keys: a public key and a private key.
+- The public key is used for encryption or signature verification, while the private key is used for decryption or signing.
+- Common algorithms: RSA, Elliptic Curve Cryptography (ECC).
+- Note: The public key is not "derived" from the private key in a reversible way; rather, it is generated as a pair, and the security relies on the one-way mathematical relationship.
+
+** Encrypting Data
+- Process: Converts plaintext into ciphertext using cryptographic algorithms.
+- Primary types:
+  - *Symmetric Encryption*: Same key for both encryption and decryption (e.g., AES, DES).
+  - *Asymmetric Encryption*: Uses a public key for encryption and a private key for decryption (e.g., RSA, ECC).
+- Transparent Encryption: Encrypting all database information with a symmetric key, often called Transparent Data Encryption (TDE).
+- Practical use: Browsers use HTTPS (TLS/SSL) for secure communication, and VPNs encrypt all transmitted data regardless of the application.
+
+** Key Exchange
+- Process: Securely exchanging cryptographic keys between parties.
+- Common methods:
+  - *Diffie–Hellman*: Allows two parties to establish a shared secret over an unsecured channel.
+  - *RSA-based Key Exchange*: Uses asymmetric encryption to securely exchange symmetric keys.
+  - *Out-of-Band Key Exchange*: Physical or separate-channel exchanges (e.g., in-person, telephone).
+  - *In-Band Key Exchange*: Exchanging keys over the same channel but with encryption.
+- Critical for initiating secure sessions and ensuring that keys are exchanged without interception.
+
+** Encryption Technologies
+- **Trusted Platform Module (TPM)**
+  - A dedicated microcontroller designed to secure hardware through integrated cryptographic keys.
+  - Provides functions such as key generation, secure storage, and random number generation.
+- **Hardware Security Module (HSM)**
+  - Used in enterprise environments to securely store thousands of cryptographic keys and perform high-volume cryptographic operations.
+  - Often certified to meet strict security standards.
+- **Secure Enclave**
+  - A separate, isolated processor (e.g., Apple’s Secure Enclave) that handles sensitive data processing and key management, featuring its own boot ROM, TRNG, and real-time memory encryption.
+- Notable algorithms:
+  - *Symmetric*: AES, DES, Triple DES (with AES being the current standard).
+  - *Asymmetric*: RSA, ECC.
+  - *Protocols*: TLS/SSL for secure web communication; IPsec for secure network communications.
+
+** Obfuscation
+- Technique: Makes code or data less understandable to deter reverse engineering.
+- Note: Obfuscation is not a substitute for encryption—it merely complicates analysis.
+- Methods:
+  - *Steganography*: Hiding information within images, audio, video, or even within TCP packets.
+  - *Data Masking*: Hiding sensitive parts of data to reveal only non-critical information.
+  - *Tokenization*: Replacing sensitive data with non-sensitive tokens, often for single-use scenarios.
+
+** Hashing and Digital Signatures
+- **Hashing:**
+  - Converts data into a fixed-size string (the hash) using one-way mathematical functions.
+  - Purpose: Ensures data integrity by detecting alterations; even small changes produce a different hash.
+  - Collision: When two different inputs produce the same hash (rare for secure algorithms).
+  - Common algorithms: MD5 (considered weak), SHA-1 (deprecated for many uses), SHA-256.
+  - Use case: Verifying file integrity is common (e.g., Linux ISOs).
+- **Digital Signatures:**
+  - Combine hashing with asymmetric encryption.
+  - Process: The signer creates a signature using their private key on the hash of a message; recipients verify it using the signer's public key.
+  - Benefits: Provides authentication, integrity, and non-repudiation.
+- **Password Storing:**
+  - Instead of storing raw passwords, systems store a salted hash.
+  - The salt (random data) is added to the password before hashing, preventing rainbow table attacks.
+  - Best Practice: Never store the plaintext password; only compare hashes during authentication.
+
+** Blockchain Technology
+- Definition: A decentralized ledger that records transactions across multiple nodes using cryptographic techniques.
+- Key properties: Immutability, transparency, and integrity of data.
+- Applications: Widely used for cryptocurrencies but also for secure, distributed data management in various fields.
+- Relies on public key cryptography for identity verification and transaction signing.
+
+** Certificates
+- Digital Certificates: Electronic documents that bind a public key to an entity’s identity.
+- Issuance: Managed by a Certificate Authority (CA) and may involve a Registration Authority (RA).
+- Contents: Include subject, issuer, validity period, public key, and other metadata.
+- Revocation: Managed via Certificate Revocation Lists (CRLs) or Online Certificate Status Protocol (OCSP).
+- Standard: X.509 is the standard format for digital certificates, critical in TLS/SSL communications.
+
+* Section 2: Threats, Vulnerabilities and Mitigations
+** Threat Actors
+   - Definition: Individuals or groups who pose a threat to information systems.
+     - Script Kiddies: Inexperienced attackers using pre-made tools. Distrupt services, sometimes philosophical reasons
+     - Hacktivists: Motivated by political or social causes. Can sometimes become insider threats.
+     - Organized Crime: Groups focused on financial gain.
+     - Nation-State Actors: Government-sponsored entities with sophisticated capabilities. data exfiltration, war, etc
+       - Advanced Persistent Threats (APT) are some of the most common attacks for nation states. Due to the amount of support by nations attacks can be massive and very sophisticated.
+     - Insiders: Employees or contractors with legitimate access who misuse privileges. Often motivated by revenge or financial gain
+     - Shadow IT: Going rogue, working around the internal IT organization, builds their own infrastructure. Uses company resources. Risky due to lack of oversight and skill
+   - Motivations: Financial gain, political influence, personal grievances, espionage.
+
+** Threat Vectors and Attack Surfaces
+- Definition: The various paths or methods by which an attacker can gain access to a system.
+- Attack Surface: All the points in a system where an unauthorized user could try to enter or extract data.
+- Considerations: Software vulnerabilities, network exposure, physical access, third-party integrations.
+
+*** Common Threat Vectors
+- Message-based vectors: attacks concealed in messages like email or text messages.
+  - Phishing attacks: fake links or malware
+  - Social engineering: invoice, cryptocurrency scams
+
+- Image-based vectors: attacks concealed in images
+  - some image formats can be exploaited like SVG descriptions where images are described as xml. This opens html/javascrpt injections in the svg description
+
+- File-based vectors: attacks concealed in files
+  - exe, pdf, zip, documents, spreadsheets (ex microsoft macros)
+
+- Voice-call vectors: spam calls and vishing calls
+  - war dialing
+  - call tampering (disrupting phone calls)
+
+- Removeable-device vectors: attacks ushing removable drives
+  - get around firewalls
+  - malicious software on usb drives
+  - usb devices can act as keyboards
+  - data exfiltration
+
+- Vulnerable-software vectors: attacks concealed in software
+  - infected exectuable
+  - do constant updates to stay up to date with latest security
+  - Agentless:
+    - no installed executable, compromised software on the server
+
+- Unsupported-sytem vectors:
+  - Patching is an important prevention tool
+  - legacy systems may not have security updates
+  - keep track of software and versions to make sure there are no systems running that you are unaware of
+
+- Unsecure-network vectors:
+  - Use latest security protocols
+  - Scan network frequenlty to asses security
+  - use no 802.1x
+  - bluetooth can also be a threat
+
+- Open service ports:
+  - connect over a tcp or UDP port
+  - every open port is an opportunity for the attacker. misconfiguration can open holes for attackers. the more services you install expand the attack surface
+  - firewall rules can limit traffic in open ports
+
+- Default credentials: routers/devices that come with stock credentials
+
+- Supply chain vector: tamper with underlying infrastructure or manufacturing process
+  - your service provider can be a threat vector if attackers get access to the MSP
+  - 2013 target credit card breach
+  - suppliers: counterfeit/bogus devices like routers and switched.
+
+*** Phishing
+   - Definition: A social engineering technique where attackers trick users into revealing sensitive information by posing as a trustworthy website or service.
+   - Methods: Spoofed/Malicious emails, fake websites, SMS (smishing), and voice calls (vishing). Typosquating (a type of url highjacking)
+   - Mitigations: User education, email filtering, multi-factor authentication (MFA).
+
+*** Impersonation
+   - Definition: An attacker pretends to be someone else to gain trust or access.
+   - Techniques: Spoofing emails, websites, or social media profiles; using stolen credentials.
+   - Mitigations: Strong authentication methods, digital signatures, user awareness training.
+
+*** Watering Hole Attacks
+   - Definition: Compromising a site frequently visited by the target group to infect their systems with malware.
+   - Process: Identify a site trusted by the target, compromise it, and then infect visiting users.
+   - Mitigations: Regular security assessments of trusted sites, network monitoring, and endpoint protection.
+   - Example: Polish Financial Supervision Authority (added malicious javascript files that targeted select IP addresses)
+
+*** Other Social Engineering Attacks
+   - Methods:
+     - Misinformation/disinformation: fake news, influence campaigns, etc.
+     - Pretexting: Creating a fabricated scenario to steal information.
+     - Baiting: Offering something enticing to get victims to reveal sensitive data.
+     - Brand impersonation: Impersonating legitimate companies or businesses
+     - Tailgating: Gaining physical access by following authorized personnel.
+     - Quid pro quo: Promising a benefit in exchange for information.
+   - Mitigations: Employee training, strict access control policies, and robust verification processes.
+
+** Types of Vulnerabilities
+*** Memory Injections
+- Definition: Malware that hijacks the permissions and memory of another running process to make it much harder to detect. Since the malware is injected into an existing process, it executes code with the same permissions as that process, essentially providing privilege escalation.
+- Methods:
+  - DLL injection: Injecting a malicious Dynamic Link Library into a running process to execute code in its context.
+  - Code cave injection: Injecting shellcode into unused space ("cave") in a process's memory.
+  - Reflective DLL injection: Loading a DLL from memory instead of disk to avoid detection.
+  - Process hollowing: Creating a benign process and replacing its code with malicious code.
+*** Buffer Overflows
+- Definition: A buffer overflow occurs when a program writes more data to a fixed-size buffer than it is designed to hold, potentially overwriting adjacent memory and causing erratic behavior or security vulnerabilities.
+- Methods:
+  - Stack-based buffer overflow: Overwriting return addresses to hijack control flow.
+  - Heap-based buffer overflow: Overwriting dynamic memory structures.
+  - Off-by-one errors: A subtle form of buffer overflow due to logic bugs.
+  - Format string vulnerability: Using uncontrolled user input in formatted output functions (e.g. printf).
+*** Race Conditions
+- Definition: When two pieces of memory are accessed at the same time, leading to unintended side effects due to unsynchronized access in concurrent execution.
+- Methods: Time-of-check to time-of-use attack (TOCTOU)
+- Example: Mars rover Spirit reboot loop January 2004
+*** Malicious Updates
+- Definition: An attack concealed inside of updates and security patches.
+- Prevent: Maintain backups, use trusted sources
+- Methods: Fake websites and popups, poisoned update servers, compromised supply chains
+- Example: SolarWinds Orion supply chain attack that added malicious code into the software of all clients
+*** Operating System Vulnerabilities
+- Definition: Attacks targeting vulnerabilities in the operating system, including kernel bugs, privilege escalation flaws, or default insecure configurations.
+- Defense: Consistent security patches (like update Tuesday with Windows), kernel hardening, minimal services
+- Attacks:
+  - Local privilege escalation (e.g., exploiting sudo or setuid binaries)
+  - Kernel exploits
+  - Misconfigured permissions or services
+- Example:
+  - Dirty COW (CVE-2016-5195): A Linux kernel race condition that allowed privilege escalation.
+- Notes: Some patches require testing to ensure there are no breaking changes
+*** SQL Injection
+- Definition: A code injection technique where malicious SQL statements are inserted into an entry field for execution, allowing attackers to bypass authentication, access or manipulate databases.
+- Defense:
+  - Use parameterized queries/prepared statements
+  - Input validation and sanitation
+  - Least privilege for database accounts
+- Attacks:
+  - Authentication bypass
+  - Data exfiltration
+  - Data deletion or modification
+- Example: 2009 Heartland Payment Systems breach via SQL injection led to 130M card thefts
+*** Cross-site Scripting
+- Definition: A vulnerability that allows attackers to inject malicious scripts into content from otherwise trusted websites, which then run in the browsers of users who visit that content.
+- Defense:
+  - Output encoding
+  - Content Security Policy (CSP)
+  - Input validation
+- Attacks:
+  - Stealing cookies/session tokens
+  - Redirecting users to malicious websites
+  - Performing actions on behalf of users
+- Example: MySpace Samy worm (2005), spread XSS through profiles
+*** Hardware Vulnerabilities
+- Definition: Vulnerabilities at the physical or firmware level of hardware components, often leading to side-channel attacks or direct memory access exploits.
+- Defense:
+  - BIOS/UEFI updates
+  - Physical security
+  - Firmware integrity checks
+- Attacks:
+  - Spectre and Meltdown: Side-channel attacks exploiting speculative execution
+  - DMA attacks via Thunderbolt ports
+- Example: Spectre/Meltdown vulnerabilities (2018) affected Intel/AMD CPUs
+*** Virtualization Vulnerabilities
+- Definition: Exploits targeting hypervisors or virtual machines, allowing breakout from a guest VM to the host or other guests.
+- Defense:
+  - Use type 1 hypervisors with strict isolation
+  - Keep hypervisor software up to date
+  - Disable unnecessary VM features (e.g., copy-paste, shared folders)
+- Attacks:
+  - VM escape (e.g., exploiting QEMU or VMware)
+  - Hyperjacking (malware that hijacks the hypervisor)
+- Example: VENOM (CVE-2015-3456) vulnerability in QEMU’s virtual floppy drive allowed VM escape
+*** Cloud-specific Vulnerabilities
+- Definition: Weaknesses unique to cloud environments, including misconfigured storage buckets, exposed APIs, and insecure multi-tenancy.
+- Defense:
+  - Secure IAM policies
+  - Enable encryption and logging
+  - Use cloud provider security tools (e.g., AWS Inspector, Azure Defender)
+- Attacks:
+  - Cloud tenant isolation failures
+  - Insecure APIs
+  - Data breaches via misconfigured S3 buckets
+- Example: Capital One breach (2019) due to misconfigured AWS WAF and exposed credentials
+
+*** Supply Chain Vulnerabilities
+- Definition: Vulnerabilities introduced through third-party software, hardware, or services integrated into an organization's systems, often during development, deployment, or update processes.
+- Defense:
+  - Vet third-party vendors and dependencies
+  - Use software bills of materials (SBOM)
+  - Monitor for abnormal update behavior
+  - Code-signing verification
+- Attacks:
+  - Compromised build environments
+  - Tampered update packages
+  - Dependency confusion (e.g., package manager manipulation)
+- Example: SolarWinds Orion attack (2020) — attackers inserted a backdoor during a software update affecting thousands of clients globally
+
+*** Misconfiguration Vulnerabilities
+- Definition: Security flaws arising from incorrect or default configuration settings in hardware, software, or network infrastructure that expose systems to attack.
+- Defense:
+  - Harden systems (e.g., disable unused ports/services)
+  - Use secure defaults and audit configurations
+  - Automate configuration management (e.g., Ansible, Chef)
+- Attacks:
+  - Open S3 buckets
+  - Public-facing admin interfaces
+  - Default credentials
+- Example: 2017 Accenture AWS S3 misconfiguration exposed sensitive client data publicly
+
+*** Mobile Device Vulnerabilities
+- Definition: Weaknesses specific to mobile platforms (iOS, Android), including insecure apps, OS vulnerabilities, or improper handling of permissions and data storage.
+- Defense:
+  - Mobile Device Management (MDM)
+  - App store vetting and sandboxing
+  - Limit sideloading and enforce updates
+- Attacks:
+  - Malicious apps (e.g., trojans in APKs)
+  - Jailbreaking/rooting leading to privilege escalation
+  - Bluetooth/Wi-Fi exploits
+- Example: Pegasus spyware exploited iOS zero-days to silently infect mobile devices and extract data (2021)
+
+*** Zero-day Vulnerabilities
+- Definition: Security flaws that are unknown to the software vendor and have no available patch at the time of discovery, making them highly valuable to attackers.
+- Defense:
+  - Behavior-based detection (e.g., anomaly detection tools)
+  - Threat intelligence and monitoring
+  - Patch management once disclosed
+- Attacks:
+  - Exploitation before public or vendor awareness
+  - Used in advanced persistent threats (APTs)
+- Example: Stuxnet (2010) used multiple Windows zero-day exploits to sabotage Iranian nuclear centrifuges
+
+** Indicators of Malicious Activity
+*** An Overview of Malware
+- Definition: Software or code designed to perform unauthorized actions on a system, often to steal data, disrupt operations, or gain persistent access.
+- Categories:
+  - Viruses, worms, trojans, ransomware, spyware, adware, rootkits, botnets
+- Indicators:
+  - Unexpected network connections
+  - Unexplained CPU/disk spikes
+  - New or modified system files
+  - Unusual process activity
+- Example: The WannaCry ransomware that combined worm-like propagation with encryption payloads (May 2017)
+
+*** Viruses and Worms
+- Definition:
+  - Virus: Malware that attaches itself to legitimate executables and requires user action to propagate.
+  - Worm: Self‑replicating malware that spreads autonomously across networks.
+- Methods:
+  - File infectors (attaching to .exe, .dll)
+  - Network exploits (broadcast, SMB, email)
+  - Removable media propagation
+- Defense:
+  - Host‑based antivirus/antimalware
+  - Network intrusion prevention systems (IPS)
+  - Least‑privilege execution contexts
+- Example: The ILOVEYOU worm (2000) exploited VBScript in email attachments to overwrite files and propagate worldwide
+
+*** Spyware and Bloatware
+- Definition:
+  - Spyware: Software that covertly collects user information or surveils activity.
+  - Bloatware: Preinstalled or bundled software that consumes resources and may include tracking components.
+- Methods:
+  - Browser extensions hooking into DOM/network APIs
+  - Background services exfiltrating keystrokes or screenshots
+  - Bundled installers that hide additional payloads
+- Defense:
+  - Application vetting and permission audits
+  - Endpoint detection and response (EDR)
+  - Regular software audits and removal of unused applications
+- Example: CoolWebSearch (early 2000s) modified browser settings and injected ads without consent
+
+*** Other Malware Types
+- Definition: Additional specialized classes of malicious software beyond viruses, worms, and spyware.
+- Types:
+  - Trojans: Malware masquerading as benign software
+  - Ransomware: Encrypts or locks data demanding payment
+  - Rootkits: Hide presence by hooking kernel functions
+  - Botnets: Networks of compromised hosts under remote control
+- Defense:
+  - Behavior‑based anomaly detection
+  - Immutable infrastructure and image‑based deployment
+  - Network segmentation and egress filtering
+- Example: CryptoLocker (2013) used asymmetric encryption to lock user files until ransom paid
+
+*** Physical Attacks
+- Definition: Direct tampering with hardware or physical infrastructure to breach security.
+- Methods:
+  - Theft of devices or storage media
+  - Hardware implants (e.g., malicious microcontrollers)
+  - Side‑channel analysis (power, EM emissions)
+- Defense:
+  - Locked server rooms and cabinets
+  - Secure boot and Trusted Platform Module (TPM)
+  - Tamper‑evident seals and surveillance
+- Example: USB drop attacks where malicious USB sticks are left for curious employees to plug in
+
+*** Denial of Service
+- Definition: Overwhelming a target’s resources (network, CPU, memory) to render services unavailable.
+- Methods:
+  - Volumetric floods (UDP, ICMP, DNS amplification)
+  - Protocol attacks (SYN floods, TCP state‑exhaustion)
+  - Application‑layer floods (HTTP GET/POST storms)
+- Defense:
+  - DDoS scrubbing services and rate limiting
+  - Anycast network distribution
+  - Stateful firewalls and SYN cookies
+- Example: Mirai botnet (2016) leveraged IoT devices to launch 1 Tbps attacks against Dyn
+
+*** DNS Attacks
+- Definition: Exploits targeting the Domain Name System to redirect or disrupt traffic.
+- Methods:
+  - Cache poisoning (injecting false records)
+  - DNS hijacking (compromised resolvers or registrars)
+  - Amplification (open resolver DDoS)
+- Defense:
+  - DNSSEC validation
+  - Secure recursive resolvers (e.g., DoH, DoT)
+  - Monitoring for anomalous record changes
+- Example: Kaminsky DNS cache‑poisoning flaw (2008) allowed large‐scale spoofing of DNS responses
+
+*** Wireless Attacks
+- Definition: Exploits against Wi‑Fi, Bluetooth, or other radio networks to intercept or manipulate data.
+- Methods:
+  - Evil twin and rogue access points
+  - Packet sniffing and injection (aircrack-ng, Wireshark)
+  - WPA2 KRACK attack (key reinstallation)
+- Defense:
+  - WPA3 and strong passphrase enforcement
+  - Network segmentation and 802.1X authentication
+  - RF shielding in high‑security environments
+- Example: KRACK (2017) exploited a weakness in WPA2’s four‑way handshake to decrypt traffic
+
+*** On-path Attacks
+- Definition: Intercepting and potentially altering communications between two parties (man‑in‑the‑middle).
+- Methods:
+  - ARP spoofing
+  - SSL stripping
+  - Transparent proxies
+- Defense:
+  - Mutual TLS (mTLS) and certificate pinning
+  - DNS over HTTPS/TLS
+  - HSTS and secure cookies
+- Example: Firesheep (2010) used packet sniffing on open Wi‑Fi to hijack session cookies
+
+*** Replay Attacks
+- Definition: Capturing valid data transmissions and retransmitting them to produce unauthorized effects.
+- Methods:
+  - Replay of authentication tokens or nonces
+  - Resubmission of transaction requests
+- Defense:
+  - Use of nonces, timestamps, and sequence numbers
+  - Challenge‑response protocols
+  - Short‐lived session tokens
+- Example: Early GSM networks were vulnerable to replay of A‑challenge authentication
+
+*** Malicious Code
+- Definition: Scripts or binaries explicitly crafted to perform harmful actions when executed.
+- Methods:
+  - Macro viruses in document files
+  - Scripted backdoors (PowerShell, Bash)
+  - Packaged payloads within installers
+- Defense:
+  - Application whitelisting (AppLocker, SELinux)
+  - Macro/script execution policies
+  - Static and dynamic code analysis
+- Example: Emotet (2018+) used malicious macros in Office documents to install banking trojans
+
+*** Application Attacks
+- Definition: Exploits targeting flaws in software applications to compromise confidentiality, integrity, or availability.
+- Methods:
+  - Injection attacks (SQLi, LDAPi)
+  - Buffer overflows and format-string bugs
+  - Cross‑site scripting (XSS), CSRF
+- Defense:
+  - Secure development lifecycle (SDL)
+  - Static/dynamic application security testing (SAST/DAST)
+  - Runtime application self-protection (RASP)
+- Example: Heartbleed (2014) exploited OpenSSL buffer over‑read to leak server memory
+
+*** Cryptographic Attacks
+- Definition: Techniques that undermine cryptographic algorithms or their implementations.
+- Methods:
+  - Brute‑force and dictionary attacks on keys
+  - Side‑channel attacks (timing, power analysis)
+  - Padding‑oracle and downgrade attacks
+- Defense:
+  - Use of well‑vetted libraries (e.g., libsodium, OpenSSL)
+  - Regular algorithm/key rotation and strong key lengths
+  - Constant‑time implementations
+- Example: POODLE (2014) exploited SSLv3 padding to decrypt TLS sessions
+
+*** Password Attacks
+- Definition: Attempts to obtain or crack user authentication credentials.
+- Methods:
+  - Brute‑force and dictionary attacks
+  - Rainbow tables and hash‑collision exploits
+  - Keylogging and credential phishing
+- Defense:
+  - Multifactor authentication (MFA)
+  - Adaptive lockout and rate‑limiting
+  - Salted and iterated hashing (bcrypt, Argon2)
+- Example: RockYou breach (2009) where unhashed passwords enabled rapid dictionary cracking
+
+*** Indicators of Compromise
+- Definition: Artifacts or behaviors that suggest a security breach has occurred.
+- Types:
+  - File system changes (new executables, altered timestamps)
+  - Network anomalies (beaconing to C2 servers)
+  - Suspicious user accounts or privilege escalations
+- Detection:
+  - Endpoint Detection and Response (EDR)
+  - Security Information and Event Management (SIEM)
+  - Threat intelligence feeds and IOC matching
+- Example: Detection of unusual PowerShell parent‑child relationships often indicates fileless malware
+
+
+
+** 2.5 Mitigation Techniques
+*** Segmentation and Access Control
+- Definition: Dividing networks or workloads into isolated zones with enforced policies to constrain communication and reduce lateral movement.
+- Controls:
+  - Network segmentation: VLANs, subnets, internal firewalls
+  - Micro‑segmentation: per‑workload software firewalls, host‑based isolation
+  - Access control: RBAC, ABAC, least‑privilege, Zero‑Trust Network Access (ZTNA)
+- Benefits:
+  - Limits blast radius of a breach
+  - Simplifies monitoring and forensics
+  - Enforces clear audit trails
+
+*** Mitigation Techniques
+- Definition: A layered suite of preventive, detective, and corrective controls designed to reduce risk and impact.
+- Preventive Controls:
+  - *Patching*: OS, application and firmware updates within defined SLAs
+  - *Encryption*: Full‑disk (FDE), file‑level, data‑in‑transit (VPN, TLS)
+  - **Configuration Enforcement**: Verify OS patch level, EDR version, firewall status, certificate validity
+  - **Asset Lifecycle Management**: Decommission obsolete devices; securely erase or destroy stored sensitive data
+- Detective Controls:
+  - **Monitoring (SIEM)**: Aggregate and correlate logs across endpoints, network and applications
+  - **EDR**: Behavior‑based detection, signature/ML analysis, automated quarantine
+  - **Host‑Based Controls**: Firewall and HIPS to detect/block anomalous processes
+- Corrective Controls:
+  - **Backups & Recovery**: Regular snapshots, off‑site storage, documented restore procedures
+  - **Incident Response**: Playbooks for containment, eradication, and recovery
+  - **Forensics & RCA**: Post‑incident analysis to prevent recurrence
+
+*** Hardening Techniques
+- Definition: Configuring systems and applications to minimize attack surface and enforce secure defaults.
+- Best Practices:
+  - **Disable Unused Services & Software**: Close unnecessary ports, remove default/install‑bloat
+  - **Security Benchmarks**: Apply CIS, DISA STIG or vendor hardening guides
+  - **Strong Authentication**: Enforce MFA, change default passwords, implement least‑privilege accounts
+  - **Secure Boot & Encryption**: Enable UEFI secure boot; use disk and application encryption
+  - **Application Whitelisting**: Only allow approved executables/scripts
+  - **Continuous Audit & Compliance**: Centralized logging, file integrity monitoring, periodic configuration reviews
+- Example:
+  - Harden a Linux web server by disabling SSH password logins (key‑only), closing non‑HTTP/HTTPS ports, applying CIS sysctl settings, and enforcing AppArmor profiles.
+
+
+* Section 3: Security Architecture
+** STUDY Cloud Infrastructures (9:56)
+- Definition: Delivery of compute, storage and services over a shared network (Internet).
+- Service Models:
+  - IaaS (Infrastructure as a Service): VMs, storage, networking
+  - PaaS (Platform as a Service): managed runtime, databases, middleware
+  - SaaS (Software as a Service): complete applications delivered over web
+- Deployment Models: Public, Private, Hybrid, Community
+- Key Controls: Shared responsibility model, identity federation (SSO/OAuth), container security, API gateways
+- Note: specifc responsibilites in terms of cloud provider and user are shown with a responsibilty matrix.
+- Keyword: Hybrid cloud: more than one public or private cloud (in these sort of setups security needs to be managed on a per cloud basis as not all the providers have the same security standards)
+
+** STUDY Network Infrastructure Concepts (6:56)
+- Segmentation: VLANs, subnets, DMZ to isolate and protect assets
+- Addressing & Translation: NAT, PAT, IPv4 vs IPv6, DHCP
+- Connectivity: LAN, WAN, MPLS, SD‑WAN
+- Tunneling & VPNs: IPSec, SSL/TLS VPN, GRE
+
+** STUDY Other Infrastructure Concepts (14:24)
+- Virtualization: Type 1 vs Type 2 hypervisors, VM sprawl controls
+- Containers & Orchestration: Docker, Kubernetes network/security policies
+- Serverless & Microservices: Function‑as‑a‑Service, service mesh (mTLS)
+- Software‑Defined Everything: SDN, SDS (storage), SDDC (data center)
+
+** STUDY Infrastructure Considerations (13:48)
+- Performance & Scalability: load balancing, auto‑scaling groups
+- Availability & Resiliency: failover clusters, geographic distribution
+- Compliance & Governance: audit logging, data residency, regulatory frameworks
+- Cost & Vendor Lock‑in: consumption vs reserved billing, API/format portability
+
+** STUDY Secure Infrastructures (5:54)
+- Defense‑in‑Depth: overlapping layers (edge, network, host, application)
+- Baseline Hardening: secure images, CIS benchmarks, secure boot
+- Least Privilege & Segmentation: microsegmentation, ZTNA
+- Immutable Infrastructure: infrastructure as code, automated rebuilds
+
+** STUDY Intrusion Prevention (5:14)
+- IDS vs IPS: passive monitoring vs inline prevention
+- Detection Methods: signature‑based, anomaly/behavioral, stateful protocol analysis
+- Deployment Modes: in‑band (inline), out‑of‑band (tap/SPAN)
+- Tuning: whitelist/blacklist, false positive management, regular signature updates
+
+** STUDY Network Appliances (11:56)
+Load Balancer
+- distribution
+- health checks
+- SSL offload
+
+Proxy / Gateway
+- forward proxy
+- reverse proxy
+- content filtering
+- caching
+
+VPN Concentrator
+- multi-site connectivity
+- client access
+
+WAF & DLP Appliances
+- HTTP inspection
+- sensitive data pattern matching
+
+NAC
+- device posture assessment
+- 802.1X enforcement
+
+Jump Server
+- provides access to secure network zones
+- use SSH, tunnel or VPN
+- must be kept very secure
+
+**Proxy Server
+- sits between users and the external network
+- receives user requests and sends them on behalf of the user
+- enables caching, access control, web/URL filtering, content scanning
+- explicit proxies require client configuration
+- transparent proxies require no client configuration
+
+   - Application proxy: handled by a specific protocol (HTTP, HTTPS, etc.)
+   - Forward proxy: user-side proxy that forwards requests for clients
+   - Reverse proxy: manages inbound traffic to internal services, adds security layer and allows caching
+   - Open proxy: uncontrolled proxy often blocked due to security risks
+
+Load Balancer (as proxy)
+- distributes load across multiple servers for fault tolerance
+- supports TCP offloading and SSL encryption offload
+- can provide caching, priority requests, content switching
+- active/passive mode: standby servers activate on failure or overload
+
+Sensors and Collectors
+- aggregate information from network devices
+- feed data to SIEM consoles to consolidate logs and trigger alerts
+
+** STUDY Port Security (3:50)
+- MAC Filtering: limit MAC addresses per switch port
+- 802.1X: port‑based authentication with RADIUS
+- BPDU Guard / Root Guard: protect spanning tree topology
+- Shutdown Unused Ports: reduce attack surface
+
+
+Eap is used as the authentication framework for devices. (switches). EAP integrates 802.1x.
+
+802.1x:
+- port based network access control (nac)
+- extensible authentication protocol (EAP)
+- can be used with an auth database (radius, LDAP, Kerberos etc)
+
+* STUDY Firewall Types (8:00)
+
+- Packet-Filtering: stateless ACLs (IP, port, protocol)
+- Stateful Inspection: maintains session state tables
+- NGFW / Application Firewall: deep packet inspection, URL filtering
+- Proxy & Host-Based Firewalls: application-layer controls on hosts
+
+- used to control the flow of network traffic
+- control of outbound and inbound data
+- content control (for parental restrictions, malware, etc)
+
+- Network-based firewall
+  - can filter traffic by port number (layer 4) or application (OSI layer 7)
+  - can encrypt traffic (act as a VPN)
+  - can function as a layer 3 device (router) at the network edge
+
+- Unified Threat Management (UTM) / All-in-One Security Appliance
+  - older devices that handle multiple security tasks
+  - URL filtering and content inspection
+  - malware detection
+  - internal mail filtering
+  - CSU/DSU
+  - firewall
+  - IDS/IPS
+  - bandwidth shaping
+  - VPN endpoint
+
+- Next-Generation Firewall (NGFW)
+  - operates at OSI layer 7 to inspect full packet content
+  - also known as application layer gateway, stateful multilayer inspection, deep packet inspection
+  - requires advanced decoding of each packet before decision
+  - controls traffic based on application (e.g., allow or block YouTube)
+  - intrusion prevention systems
+  - content filtering (URL filters, category-based blocking)
+
+- Web Application Firewall (WAF)
+  - applies rules to HTTP/HTTPS conversations
+  - can detect SQL injection
+  - often used alongside NGFW for web traffic logging
+
+** STUDY Secure Communication (9:55)
+- TLS / SSL: certificates, cipher suites, mutual TLS (mTLS)
+- SSH: secure remote shell, key management, port forwarding
+- VPN Types: site‑to‑site vs remote‑access, client‑based vs clientless
+- Email Security: S/MIME, PGP, STARTTLS
+
+** STUDY Data Types and Classifications (5:54)
+- Public vs Internal vs Confidential vs Restricted
+- PII, PHI, PCI, IP, trade secrets
+- Classification Labels & Markings: “Top Secret”, “Secret”, “Confidential”
+- Handling Requirements: access controls, encryption, retention policies
+
+** STUDY States of Data (6:07)
+- Data at Rest: encrypted volumes, FDE, file‑level encryption
+- Data in Transit: TLS/VPN, IPsec, wireless encryption (WPA3)
+- Data in Use: memory protection, DLP agent controls
+
+** STUDY Protecting Data (14:28)
+- Encryption: symmetric vs asymmetric, key management, HSM
+- Tokenization & Masking: replace sensitive data in non‑production
+- DLP: monitor/block exfiltration, contextual analysis
+- Backup & Archive: encryption in storage, immutable snapshots
+- Access Controls: RBAC, ABAC, just‑in‑time provisioning
+
+** STUDY Resiliency (9:42)
+- Redundancy: N+1, active‑active, active‑passive configurations
+- Fault Tolerance: RAID levels, fail‑over clustering, ECC memory
+- High Availability: load balancing, health checks, geographic failover
+- Chaos Engineering: regular failure injection testing
+
+** STUDY Capacity Planning (3:53)
+- Forecasting: historical usage trends, growth projections
+- Thresholds & Alerts: CPU, memory, I/O utilization
+- Scalability Strategies: vertical vs horizontal scaling
+- Load Testing: simulate peak loads, stress test failover
+
+** STUDY Recovery Testing (5:18)
+- RTO & RPO: define objectives for different systems
+- Test Types: tabletop, live‑failover, parallel testing
+- Documentation & Playbooks: step‑by‑step recovery procedures
+- Post‑Test Review: lessons learned, update runbooks
+
+** STUDY Backups (12:16)
+- Types: full, incremental, differential
+- Rotation Schemes: Grandfather‑Father‑Son, GFS
+- Storage Locations: on‑site, off‑site, cloud, cold storage
+- Validation: automated integrity checks, restore drills
+
+** STUDY Power Resiliency (4:02)
+- UPS Types: offline (standby), line‑interactive, online (double‑conversion)
+- Generators & PDUs: runtime extension, power distribution, redundant feeds
+- Surge Protection & Voltage Regulation
+- Environmental Monitoring: temperature, humidity, smoke
 
 
 
 * Links
+** Practice hacking
+- https://owasp.org/www-project-webgoat/ (web vulnerabilities)
 ** Practice exams
 - https://www.examprepper.co/
 - https://certpreps.com/secplus/
@@ -33,3 +900,41 @@
 - https://www.certnova.com/
 ** Videos
 - https://www.youtube.com/playlist?list=PLG49S3nxzAnl4QDVqK-hOnoqcSKEIDDuv -> prof playlist
+** Flashcards
+- acronyms: https://quizlet.com/125183829/security-acronyms-flash-cards/?funnelUUID=75dbb4f2-14a9-4c9d-b028-275934f87cc3
+
+** Extra Reading Resources*
+- *Understanding the CIA Triad*:
+  [NIST Guide to Security Controls (SP 800-53)](https://csrc.nist.gov/publications/detail/sp/800-53/rev-5/final)
+- *Digital Signatures and Non-Repudiation*:
+  [RFC 3161 Time-Stamp Protocol](https://tools.ietf.org/html/rfc3161)
+- *AAA Concepts and Protocols*:
+  [Cisco’s Guide on AAA](https://www.cisco.com/c/en/us/support/docs/security/identity-management/2200-series-remote-access-solutions/117379-technote-rca-00.html)
+- *Gap Analysis in Security*:
+  [NIST Special Publication 800-171](https://csrc.nist.gov/publications/detail/sp/800-171/rev-2/final)
+- *Zero Trust Architecture*:
+  [NIST Zero Trust Framework](https://www.nist.gov/publications/zero-trust-architecture)
+- *Physical Security*:
+  - [NIST SP 800-53 Rev. 5 – Security and Privacy Controls](https://csrc.nist.gov/publications/detail/sp/800-53/rev-5/final) cite
+  - [SANS Institute: Physical Security Best Practices](https://www.sans.org/white-papers/physical-security) cite
+- *Deception and Disruption*:
+  - [Understanding Honeypots and Cyber Deception – SANS Reading Room](https://www.sans.org/reading-room/whitepapers/advanced/honeypots-cyber-deception-35220) cite
+  - [NIST Guidelines on Deception Technologies](https://csrc.nist.gov/publications/detail/sp/800-160/final) :contentReference[oaicite:0]{index=0}
+- *ITIL Change Management*:
+  [ITIL Foundation Overview](https://www.axelos.com/best-practice-solutions/itil) – Provides a comprehensive understanding of change management processes within the ITIL framework.
+- *NIST Guidelines on Change Management*:
+  [NIST SP 800-128: Guide for Security-Focused Configuration Management](https://csrc.nist.gov/publications/detail/sp/800-128/final) – Focuses on configuration and change management in IT security.
+- *Technical Change Management Tools & Best Practices*:
+  [DevOps and Change Management](https://www.atlassian.com/devops/change-management) – Discusses automation tools and practices for managing technical changes effectively.
+- **Public Key Infrastructure**:
+  [Introduction to PKI – GlobalSign](https://www.globalsign.com/en/blog/what-is-pki)
+- **Encrypting Data & Key Exchange**:
+  [Encryption Basics – SSL.com](https://www.ssl.com/faqs/what-is-encryption/)
+- **Encryption Technologies**:
+  [NIST Cryptographic Standards](https://csrc.nist.gov/Projects/cryptographic-standards-and-guidelines)
+- **Hashing and Digital Signatures**:
+  [How SHA-256 Works – Cloudflare](https://www.cloudflare.com/learning/ssl/how-does-sha-256-work/)
+- **Blockchain Technology**:
+  [Blockchain Explained – IBM](https://www.ibm.com/topics/what-is-blockchain)
+- **Certificates**:
+  [Understanding Digital Certificates – DigiCert](https://www.digicert.com/what-is-an-ssl-certificate)
