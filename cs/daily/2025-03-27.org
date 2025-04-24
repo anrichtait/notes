@@ -1,7 +1,0 @@
-:PROPERTIES:
-:ID:       d0a65585-832d-4930-b599-f4e98d627b83
-:END:
-#+title: 2025-03-27
-This is todays note
-
-* TODO Test todo
