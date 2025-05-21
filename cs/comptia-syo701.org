@@ -1,9 +1,31 @@
 #+title: CompTIA SY0-701 Security+ Notes
 #+author: Anrich Tait
 
+
+* Chapter 1: Today's Security Professional
+** Cyber Security Objectives or CIA Triad
+- *Confidentiality*: Ensuring that data is accessible only to authorized users.
+  Examples: Multi-factor authentication (MFA), encryption, access controls, and secure communication protocols.
+- *Integrity*: Maintaining the accuracy and consistency of data.
+  Techniques: Digital signatures, hashing (e.g., SHA-256), checksums, and certificates.
+- *Availability*: Ensuring that data and systems are accessible when needed.
+  Methods: Fault tolerance, redundancy, regular patching/updating, load balancing, and disaster recovery planning.
+
+- *Non-repudiation*: Garuntees that an action cannot be denied by the actor after the fact. This is done with proof of integrity to verify the file has not been altered and proof of origin to ensure the data comes from a verified source
+
+** Data Breach Risks
+**** DAD Triad
+The DAD Triad explains the three key threats to cybersecurtiy efforts:
+- Disclosure: the exposure of sensitive information. Ex. Leaking government secrets
+- Alteration: the unauthorized modifaction of information. Ex. Changing financial records
+- Denial: disruption of authorized users legitimate access to information. Ex. DDoS
+
+Example using the DAD Triad to assess a website:
+- Disclosure: does the website contain sensitive information?
+- Alteration: if an attacker could modify information on the website what could they gain? (financial, reputational etc)
+- Denial: does the website perform mission-critical activities that could damage the business if the site went down?
 * Section 1: General Security Concepts
 ** Security Controls (11:48)
-CLOSED: [2025-04-08 Tue 13:58]
 *** Technical Controls
 - Automated mechanisms implemented via technology (e.g., firewalls, antivirus, intrusion detection systems, OS hardening) that protect systems and networks.
 *** Managerial Controls
@@ -12,20 +34,6 @@ CLOSED: [2025-04-08 Tue 13:58]
 - Day-to-day procedures and practices (e.g., security awareness, incident response, routine monitoring) performed by people.
 *** Physical Controls
 - Measures that restrict physical access (e.g., locks, keycard access, surveillance systems, fences).
-
-** The CIA Triad (5:17)
-*** The CIA Triad
-- *Confidentiality*: Ensuring that data is accessible only to authorized users.
-  Examples: Multi-factor authentication (MFA), encryption, access controls, and secure communication protocols.
-- *Integrity*: Maintaining the accuracy and consistency of data.
-  Techniques: Digital signatures, hashing (e.g., SHA-256), checksums, and certificates.
-- *Availability*: Ensuring that data and systems are accessible when needed.
-  Methods: Fault tolerance, redundancy, regular patching/updating, load balancing, and disaster recovery planning.
-
-** Non-repudiation (7:57)
-- Guarantees that an action cannot be denied after the fact.
-- *Proof of Integrity*: Using hashing to verify that a file or data has not been altered.
-- *Proof of Origin*: Employing digital signatures—data is signed with a private key and verified with a corresponding public key—to confirm the source.
 
 ** Authentication, Authorization, and Accounting (9:03)
 - AAA servers store user details and authenticate login requests.
@@ -900,7 +908,166 @@ Eap is used as the authentication framework for devices. (switches). EAP integra
 
 * Section 4: Security Operations
 ** Secure Baselines (4:11)
-** Hardening Targets (10:11)
+- Security baseline: A set of predefined security settings applied to systems, applications, and devices to ensure consistent protection.
+  - Practical example: Ensuring that a deployed web server has proper firewall rules, updated patches, and OS hardening.
+
+- Importance: Each deployment of an application must include deployment of its corresponding security baselines.
+  - These baselines help enforce security across all components (app, OS, network devices, etc.).
+  - Regular checks are required to confirm the baseline is still applied correctly.
+
+- Deviation and remediation: If parts of an application or system are found to deviate from the baseline, a correction plan must be initiated.
+  - Practical example: Identifying missing OS patches or misconfigured file permissions and updating them to meet baseline requirements.
+
+- Sources of baseline templates:
+  - *Application developers* may provide baseline templates for their software.
+  - *Operating system manufacturers* like Microsoft provide baselines for Windows and Windows Server.
+  - *Appliance vendors* may also supply device-specific baseline recommendations.
+
+- File permissions and configuration settings: Baselines often include specifics like file system permissions and internal app configuration details.
+
+- Complexity: Creating a baseline from scratch can be overwhelming.
+  - Example: Windows 10 includes over 3,000 Group Policy settings, though only a portion relate to security.
+
+- Microsoft Security Compliance Toolkit (SCT):
+  - Toolset provided by Microsoft to help deploy and manage security baselines.
+  - Includes prebuilt baselines and deployment support tools.
+
+- Deployment:
+  - Baselines must be applied to all components in an app instance.
+  - Some tools support centralized deployment (e.g., SCT).
+  - Others may require use of additional tools like:
+    - *Group Policy Objects (GPOs)* in Active Directory.
+    - *Mobile Device Management (MDM)* solutions for mobile devices.
+
+- Automation:
+  - Necessary for scalability (hundreds or thousands of devices).
+  - Automates application of baselines and reduces manual errors.
+  - Baselines are usually stable (best practices), so frequent updates are not always needed.
+
+- Updating baselines:
+  - Triggered by new vulnerabilities, software updates, or changes in OS/application architecture.
+  - Practical example: Applying new settings after an app update or patching a newly discovered vulnerability.
+
+- Conflicting baselines:
+  - Different vendors may offer incompatible baseline recommendations.
+  - Requires assessment to determine the optimal configuration for the environment.
+
+- Testing and auditing:
+  - Baselines should be tested before deployment.
+  - Ongoing auditing ensures settings remain enforced post-deployment.
+  - Practical example: Using compliance scanners or configuration management tools to verify baseline adherence.
+
+** Hardening Targets (0:00)
+- Default configuration: The out-of-the-box settings of an OS or device, which are rarely secure.
+  - Description: Fresh installs often leave unnecessary services enabled, default credentials unchanged, and open ports exposed.
+  - Practical example: A new Windows Server image with RDP open and default Administrator account active.
+
+- Hardening guide: A vendor- or community-provided document listing recommended security configurations.
+  - Manufacturer guide:
+    - Provided by OS or device maker (e.g., Microsoft Windows Hardening Guide, CIS Benchmarks).
+    - Practical example: Downloading Microsoft’s security baseline for Windows Server from the Security Compliance Toolkit.
+  - Third-party guide:
+    - Created by security communities or independent experts when official guides are unavailable.
+    - Practical example: An online blog post detailing CLI commands to disable unused features on a router.
+
+- Configuration challenge: Identifying which settings to change can be overwhelming due to volume and complexity.
+  - Description: Hundreds or thousands of potential options (e.g., 3,000+ Group Policy settings in Windows 10, only a subset for security).
+  - Practical example: Filtering out non-security policies when evaluating a Windows 10 GPO export.
+
+- Patch management: Applying vendor patches (bug fixes and security updates) to close vulnerabilities.
+  - Patch sources:
+    - OS vendors (e.g., Microsoft Patch Tuesday).
+    - Appliance manufacturers (infrequent firmware updates).
+  - Practical example: Deploying the monthly Windows cumulative update to address newly disclosed CVEs.
+
+- Data segmentation (mobile): Logical separation of corporate and personal data on mobile devices.
+  - Description: Isolates company assets from user files, reducing lateral movement risk.
+  - Practical example: Android Enterprise work profile isolating corporate email/apps from personal photos.
+
+- Mobile Device Manager (MDM): Centralized platform to enforce policies and push updates to mobile fleets.
+  - Description: Monitors compliance, deploys patches, enforces encryption and passcodes.
+  - Practical example: Using Intune to require device encryption and the latest iOS security update on enrolled iPhones.
+
+- Workstation hardening: Applying hardening principles to desktops and laptops (Windows, macOS, Linux).
+  - Components:
+    - OS patches and firmware updates.
+    - Removal of unused software and services.
+    - Local firewall and antivirus configuration.
+  - Practical example: Disabling SMBv1, removing legacy Office macros, enforcing disk encryption on Linux workstations.
+
+- Network infrastructure hardening: Securing embedded-OS devices (switches, routers, firewalls).
+  - Default credential change:
+    - Always replace factory usernames/passwords.
+    - Practical example: Setting unique admin passwords on Cisco switches.
+  - Authentication integration:
+    - Local vs central (RADIUS/TACACS+).
+    - Practical example: Pointing firewall admin logins to an Active Directory-backed RADIUS server.
+  - Firmware and patch monitoring:
+    - Check vendor sites for rare updates.
+    - Practical example: Subscribing to Juniper security advisories for occasional OS patches.
+
+- Centralized patch scheduling: Grouping updates for efficient testing and deployment.
+  - Description: Vendors often release all patches on a set day (e.g., Patch Tuesday).
+  - Practical example: QA team validates all Microsoft updates in a staging environment every second Tuesday before wide deployment.
+
+- Software removal: Uninstalling unused applications to eliminate attack vectors.
+  - Practical example: Removing legacy print spooler service from servers that no longer require printing.
+
+- Cloud management workstation: A dedicated, hardened machine for administering cloud environments.
+  - Security controls:
+    - MFA, host EDR, no general internet browsing.
+    - Practical example: An Azure Bastion host locked down with conditional access and Defender for Endpoint.
+
+- Least privilege (cloud): Granting minimal permissions required for services, users, and applications.
+  - Practical example: An AWS IAM role restricted to S3:GetObject on a specific bucket rather than full S3 access.
+
+- Endpoint Detection and Response (EDR): Client-side agents monitoring for malicious behavior.
+  - Practical example: Deploying CrowdStrike Falcon on all cloud VMs to alert on anomalous processes.
+
+- Backup strategy: Regular backups of on-premises and cloud systems to separate providers.
+  - Practical example: Nightly Azure VM snapshots replicated to AWS S3 for disaster recovery.
+
+- Server hardening: Securing on-premises servers (Windows, Linux, *nix).
+  - Patching: OS updates, service packs.
+  - Authentication:
+    - Enforce password complexity and minimum length.
+    - Disable unused/local accounts.
+  - Network controls:
+    - Restrict access via firewall rules or host-based policies.
+  - EDR/antivirus:
+    - Practical example: Installing Sophos or Microsoft Defender on Linux servers with regular signature updates.
+
+- SCADA/ICS hardening: Protecting industrial control systems.
+  - Isolation:
+    - Air-gapped or heavily segmented networks.
+    - Practical example: Power-plant PLCs accessible only through a one-way data diode.
+  - Minimal services:
+    - Disable non-essential functions on DCS devices.
+
+- Embedded systems hardening: Securing purpose-built appliances (IoT, smart TVs, wearables).
+  - Patch vigilance:
+    - Install firmware updates promptly despite infrequent releases.
+  - Network segmentation:
+    - Place on dedicated VLAN with firewall protection.
+  - Practical example: Isolating smart building controllers on an IoT VLAN with restricted egress.
+
+- Real-Time Operating System (RTOS) security:
+  - Characteristics:
+    - Deterministic execution, strict timing constraints.
+    - Common in industrial, automotive, and military systems.
+  - Hardening:
+    - Run minimal services.
+    - Isolate network behind dedicated firewall or host-based controls.
+  - Practical example: Disabling unused daemons on an automotive ECU RTOS and enforcing a host-based intrusion detection agent.
+
+- IoT device prioritization:
+  - Description: Consumer-grade devices often lack built-in security.
+  - Patch priority:
+    - Apply vendor patches immediately.
+  - Network segmentation:
+    - Limit lateral movement by isolating IoT on its own subnet.
+  - Practical example: Segmenting smart lighting and HVAC controllers on a separate VLAN with strict ingress/egress rules.
+
 ** Securing Wireless and Mobile (8:58)
 ** Wireless Security Settings (10:54)
 ** Application Security (8:26)
@@ -930,7 +1097,8 @@ Eap is used as the authentication framework for devices. (switches). EAP integra
 ** incident planning (6:50)
 ** digital forensics (9:54)
 ** log data (13:41)
-** section 5: security program management and oversight
+
+* section 5: security program management and oversight
 ** security policies (11:02)
 ** security standards (5:36)
 ** security procedures (7:02)

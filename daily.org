@@ -1,0 +1,106 @@
+* 75-Day Holistic Bodyweight Muscle Gain Plan
+  A structured, 75-day challenge built on Andy Frisella’s “75 Hard” framework,
+  combining daily dual workouts (one indoors, one outdoors), strict nutrition,
+  hydration, and mental resilience practices. This plan optimizes hypertrophy
+  through progressive bodyweight and minimal-equipment routines, while leveraging
+  sleep, diet, sun exposure, and cold therapy to naturally maximize testosterone.
+  You’ll follow a 4:00 AM to 9:00 PM routine that balances muscle gain, programming
+  study, family time, and recovery—all on a budget-friendly meal plan.
+
+** Plan Overview
+   - *Duration:* 75 days of consecutive adherence (no cheat meals, no alcohol,
+     daily progress photos). [[1]]
+   - *Dual Workouts:*
+     - *Morning (4:00–5:00 AM):* Fasted bodyweight + dumbbell hypertrophy.
+     - *Midday/Outdoor:* Second session: brisk walk, jog, or HIIT outdoors
+       (builds mental toughness and sun exposure). [[2]]
+   - *Daily Non-Negotiables:*
+     - Follow a structured diet (eggs, mince, chicken, rice, pasta, maize meal).
+     - Drink 4 L water.
+     - Read 10 pages of nonfiction.
+     - Take one progress photo. [[2]]
+
+** Benefits of the Plan
+*** Mental Toughness & Discipline
+    The “75 Hard” rules push resilience and consistency, building grit transferable
+    to all life areas. Participants report improved focus, self-confidence, and
+    emotional resilience. [[3]]
+
+*** Muscle Hypertrophy with Bodyweight
+    Progressive overload via slow eccentrics, reps to failure, and variations
+    (e.g., elevated push-ups, pistol squats) stimulates muscle growth comparably
+    to weights when volume and intensity are high. [[4][5]]
+
+*** Testosterone Optimization
+    - *Exercise:* Resistance and HIIT boost endogenous testosterone. [[6][7]]
+    - *Nutrition:* Adequate protein, healthy fats, zinc, magnesium, and
+      vitamin D support hormone synthesis. [[8][9]]
+    - *Lifestyle:* Early sun exposure, cold showers, and stress management reduce
+      cortisol and favor T levels. [[10][6]]
+    - *Sleep:* Consistent 7–9 hrs nightly is critical for hormonal recovery. [[8]]
+
+*** Budget-Friendly Gains
+    Core staples—eggs, ground meat, rice, pasta, maize meal, beans—provide a
+    calorie-dense, protein-rich diet for ~3 000 kcal/day at minimal cost. [[11][12]]
+
+** Core Exercises (Morning Hypertrophy)
+*** Push (Chest/Shoulders/Triceps)
+    - Elevated Push-ups: 4×12 (3–5 sec descent)
+    - Diamond Push-ups: 3×10
+    - Pike Push-ups: 3×8
+    - Chair Dips: 4×10
+
+*** Pull (Back/Biceps)
+    - Pull-ups: 5×Failure
+    - Inverted Rows: 4×10
+    - Towel Curls (Dumbbell): 3×12 (slow tempo)
+    - Isometric Holds: 3×30 sec
+
+*** Legs/Core
+    - Bulgarian Split Squats: 4×12/leg
+    - Jump Squats: 4×10
+    - Calf Raises: 5×20
+    - Leg Raises (hanging or lying): 4×15
+    - Plank with Shoulder Taps: 3×1 min
+
+    _Progression:_ Increase reps/sets or add slow eccentrics and holds every week.
+
+** Sample Budget Meal Plan
+   | Meal                   | Components                                                       |
+   |------------------------+------------------------------------------------------------------|
+   | *Breakfast*            | 3 eggs in olive oil; 2 slices brown bread + PB; 1 banana         |
+   | *Post-Workout Shake*   | 1 scoop whey; 10 g collagen; ½ cup oats + 1 cup milk             |
+   | *Lunch*                | 1.5 cups cooked rice; 150 g chicken mince; beans; olive oil      |
+   | *Snack*                | 2 eggs or cheese sandwich; fruit                                 |
+   | *Dinner*               | Pasta (2 cups) + 150 g mince in tomato sauce; side of maize meal |
+   | *Night Snack*          | Yogurt or milk + oats + PB                                       |
+
+   Adjust portions to hit +300 kcal above maintenance; swap maize meal porridge
+   for variety. [[3]]
+
+** Recommended Books
+   - «Atomic Habits» by James Clear — Habit formation and consistency. [[14]]
+   - «Can't Hurt Me» by David Goggins — Mental toughness and overcoming adversity. [[15]]
+   - «12 Rules for Life» by Jordan B. Peterson — Discipline and personal responsibility. [[14]]
+   - «The Way of the Superior Man» by David Deida — Masculine purpose and relationships. [[16]]
+   - «The Power of Moments» by Chip Heath & Dan Heath — Creating lasting change through pivotal experiences. [[14]]
+
+** Download
+   [[file:75_hard_holistic_plan.pdf][Download the full plan as a PDF]]
+
+* Footnotes
+[1] https://andyfrisella.com/blogs/articles/what-is-75-hard
+[2] https://health.clevelandclinic.org/75-hard-challenge-and-rules
+[3] https://www.reddit.com/r/beginnerfitness/comments/1cywd4d/i_tried_the_75_hard_challenge_and_heres_what/
+[4] https://www.healthline.com/health/exercise-fitness/hypertrophy-vs-strength
+[5] https://blog.lionel.edu/benefits-of-bodyweight-training
+[6] https://www.healthline.com/nutrition/8-ways-to-boost-testosterone
+[7] https://www.youtube.com/watch?v=amRT6MY-E-0
+[8] https://www.health.harvard.edu/mens-health/lifestyle-strategies-to-help-prevent-natural-age-related-decline-in-testosterone
+[9] https://healthcare.utah.edu/the-scope/all/2016/01/lifestyle-changes-can-increase-testosterone-levels
+[10] https://www.verywellhealth.com/how-to-increase-testosterone-8693596
+[11] https://builtwithscience.com/diet/healthy-meal-prep-budget/
+[12] https://www.muscleandstrength.com/articles/muscle-meals-on-a-budget.html
+[14] https://bodycompleterx.com/blogs/lifestyle/best-inspirational-fitness-motivation-books-by-topic
+[15] https://www.reddit.com/r/suggestmeabook/comments/vcwgor/a_book_that_helped_you_achieve_your_fitness_goals/
+[16] https://runtothefinish.com/best-fitness-books/
